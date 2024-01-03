@@ -1,0 +1,53 @@
+.default-link {
+    border-bottom: 1px solid transparent;
+}
+
+.active-link {
+
+    border-bottom: #242C2E solid 1px;
+}
+
+nav {
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: #242C2E solid 1px;
+
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 30%;
+    align-items: center;
+    list-style-type: none;
+
+
+}
+
+nav ul a,
+nav ul a:visited {
+
+    text-decoration: none;
+}
+
+nav a {
+    font-size: 35px;
+    color: white;
+    font-weight: 700;
+}
+
+.searchbar {
+    border-radius: 9px;
+    width: 600px;
+    height: 40px;
+    /*background-color: hsla(200, 26%, 35%, 0.8);*/
+    border: none;
+    background-color: #1A282D;
+    color: white;
+}
+
+
+
+

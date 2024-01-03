@@ -1,0 +1,21 @@
+li {
+    color: white;
+    font-weight: 100;
+}
+
+.catlist {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0px;
+    /*gap: 10px;*/
+    width: 170px;
+    border-bottom: #242C2E solid 1px;
+    border-right: #242C2E solid 1px;
+
+}
+
+
+h3 {
+    color: white;
+}
