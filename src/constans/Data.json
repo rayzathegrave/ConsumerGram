@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+  },
+  {
+    "id": 2,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+
+  },
+  {
+    "id": 3,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+
+  },
+
+  {
+
+    "id": 4,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+  },
+
+  {
+
+    "id": 5,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+  },
+
+  {
+
+    "id": 6,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+  },
+
+  {
+
+    "id": 7,
+    "caption": "zojuist deze tv gekocht",
+    "imgPath": "src/assets/logo-consumergram.png",
+    "postedBy": "bigDconsumer",
+    "categories": "Tech"
+  }
+
+
+
+
+
+]

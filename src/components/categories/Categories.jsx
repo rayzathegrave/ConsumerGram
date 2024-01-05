@@ -3,6 +3,7 @@ import './Categories.css';
 function Categories() {
     return (
         <>
+
             <ul className="catlist">
                 <h3>Categories</h3>
                 <li>Cars</li>

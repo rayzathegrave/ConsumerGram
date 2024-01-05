@@ -12,9 +12,9 @@ function App() {
 
     return (
         <>
-            <body>
+
             <Nav />
- 
+
             <Routes>
                 {/*<Route path="/" element={<Home/>}/>*/}
                 <Route path="/" element={<div><Helmet><title>ConsumerGram | Home</title></Helmet><Home /></div>}/>
@@ -24,7 +24,7 @@ function App() {
                 <Route path="*" element={<div><Helmet><title>ConsumerGram | NotFound</title></Helmet><NotFound /></div>}/>
 
             </Routes>
-        </body>
+
         </>
     )
 }
