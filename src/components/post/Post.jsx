@@ -10,11 +10,13 @@ function Post() {
                 <div className="inner-content-container">
                     {posts.map((post) => (
                         <div key={post.id} className="blog-post">
-                            <h2>Blogpost #{post.id}</h2>
+                            {/*<h2>Blogpost #{post.id}</h2>*/}
                             <p>{post.caption}</p>
-                            <p>Posted by: {post.postedBy}</p>
                             <img src={post.imgPath} alt={post.caption} />
-                            <Link to={`/blog/${post.id}`}>Read more</Link>
+                            <p>Posted by: {post.postedBy}</p>
+
+                            <p> Category: {post.categories}</p>
+                            <Link to={`/blog/${post.id}`}>Go to profile</Link>
                         </div>
                     ))}
                 </div>

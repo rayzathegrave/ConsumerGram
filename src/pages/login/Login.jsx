@@ -3,7 +3,7 @@ function Login() {
 return (
 <>
 
-
+<div className="pimsouterbox">
     <div className="signupSection">
         <div className="info">
             <h2>Welcome to ConsumerGram</h2>
@@ -44,7 +44,7 @@ return (
             </ul>
         </form>
     </div>
-
+</div>
 
 
 </>

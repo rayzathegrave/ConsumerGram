@@ -13,29 +13,39 @@ body {
 
 p {
     font-family: 'Geologica', sans-serif;
-    /*font-family: 'Open Sans', sans-serif;*/
-    /*color: purple;*/
-    font-weight: 300;
-    font-size: 18px;
-
+    color: white;
 }
+
+
 
 h1, h2 , h3 {
     font-family: 'Geologica', sans-serif;
     font-weight: 700;
     font-size: 30px;
+    color: white;
 }
 
 
 ul {
 
     font-family: 'Geologica', sans-serif;
-
     font-size: 30px;
     font-weight: 900;
 }
 
 
+
+li {
+    color: white;
+    font-weight: 100;
+}
+
+.pimsouterbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 4px dashed blue;
+}
 
 
 

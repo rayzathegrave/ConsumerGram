@@ -1,16 +1,12 @@
-p {
-    color: white;
-}
 
-h2 {
-    color: white;
-}
 
 .postContainerOuter {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 70%;
+    border: 5px solid pink;
 }
 
 
