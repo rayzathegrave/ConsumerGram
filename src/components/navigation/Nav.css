@@ -29,7 +29,6 @@ nav ul {
 }
 
 
-
 .searchbar {
     border-radius: 9px;
     width: 600px;
@@ -74,48 +73,60 @@ nav ul {
     /*border: 3px solid white;*/
 }
 
-/*@media screen and (max-width: 600px) {*/
-/*    nav ul {*/
-/*        display: none;*/
-/*        flex-direction: column;*/
-/*        padding: 0;*/
-/*    }*/
+@media screen and (max-width: 600px) {
+    nav ul {
+        /*display: none;*/
+        flex-direction: column;
+        padding: 0;
+    }
 
-/*    nav li {*/
-/*        width: 100%;*/
-/*        text-align: center;*/
-/*    }*/
+    nav li {
+        width: 100%;
+        text-align: center;
 
-/*    .dropdown {*/
-/*        display: flex;*/
-/*        justify-content: center;*/
-/*        align-items: center;*/
-/*        background-color: #242C2E;*/
-/*        padding: 10px;*/
-/*        position: fixed;*/
-/*        top: 0;*/
-/*        width: 100%;*/
-/*        z-index: 9999; !* Ensure it's above other content *!*/
-/*    }*/
+    }
 
-/*    .dropdown-content {*/
-/*        display: none;*/
-/*        text-align: center;*/
-/*        background-color: #242C2E;*/
-/*        width: 100%;*/
-/*    }*/
+    .searchbar {
+        width: 400px;
+        display: flex;
+        /*justify-content: center;*/
+    }
 
-/*    .dropdown:hover .dropdown-content {*/
-/*        display: block;*/
-/*    }*/
+    .search {
+        display: flex;
+        justify-content: center;
+    }
 
-/*    .dropdown-content a {*/
-/*        display: block;*/
-/*        padding: 10px;*/
-/*        color: white;*/
-/*        text-decoration: none;*/
-/*    }*/
-/*}*/
+    .dropdown {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #242C2E;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 9999; /* Ensure it's above other content */
+    }
+
+    .dropdown-content {
+        display: none;
+        text-align: center;
+        background-color: #242C2E;
+        width: 100%;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+    }
+}
 
 /*@media screen and (max-width: 600px) {*/
 /*    nav ul {*/
@@ -174,8 +185,6 @@ nav ul {
 /*        text-decoration: none;*/
 /*    }*/
 /*}*/
-
-
 
 
 /*.default-link {*/

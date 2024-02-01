@@ -23,7 +23,7 @@ return (
                 </li>
                 </ul>
         </div>
-        <form action="#" method="POST" className="signupForm" name="signupform">
+        <form   action="#" method="POST" className="signupForm" name="signupform">
             <h2>Sign Up</h2>
             <ul className="noBullet">
                     <li>
