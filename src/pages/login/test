@@ -1,79 +1,100 @@
-import './TestPage2.css';
-import {Link} from "react-router-dom";
+import React, { useState } from 'react';
+import './styles.css';
 
-import {useState} from "react";
-import axios from "axios";
-
-
-
-function TestPage2() {
-
-    const [username, setUserName] = useState('');
+const LoginForm = () => {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
-    const enabled = true
+    const [error, setError] = useState('');
 
-    async function createUser(e) {
-        e.preventDefault();
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value);
+    };
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
         try {
-
-            const response = await axios.post('http://localhost:8080/users', {
-                username: username,
-                password: password,
-                email: email,
-                enabled : enabled
+            const response = await fetch('your-login-endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
             });
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
 
-    async function fetchData() {
-        try {
-            const response = await axios.get('http://localhost:8080/users');
-            console.log(response.data);
-        } catch (error) {
-                console.error(error);
+            if (response.ok) {
+                // Successful login
+                console.log('Login successful');
+                // Reset the form after successful login
+                setUsername('');
+                setPassword('');
+                setError('');
+            } else {
+                // Failed login
+                const data = await response.json();
+                setError(data.message || 'Login failed');
             }
+        } catch (error) {
+            console.error('Error during login:', error.message);
+            setError('An error occurred during login');
         }
+    };
 
     return (
-        <>
-            <Link to="/testpage">
-                <button>test page2</button>
-            </Link>
-
-
-
-            <form onSubmit={(e) => createUser(e)}>
-                <label htmlFor="username">Username</label>
-                <input
-                    type="text"
-                    name="username"
-                    value={username}
-                    onChange={(e) => setUserName(e.target.value)}/>
-
-                <label htmlFor="password">password</label>
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
-
-                <label htmlFor="email">email</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}/>
-
-                <button type="submit">
-                    submit
-                </button>
-            </form>
-        </>
+        <div className="pimsouterbox">
+            <div className="signupSection">
+                <div className="info">
+                    <h2>Welcome to ConsumerGram</h2>
+                    <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+                    <p>The Future Is Here</p>
+                    <form onSubmit={handleSubmit}>
+                        <ul className="noBullet">
+                            <li>
+                                <label htmlFor="username"></label>
+                                <input
+                                    type="text"
+                                    className="inputFields"
+                                    id="username"
+                                    name="username"
+                                    placeholder="Username"
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                    required
+                                />
+                            </li>
+                            <li>
+                                <label htmlFor="password"></label>
+                                <input
+                                    type="password"
+                                    className="inputFields"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    required
+                                />
+                            </li>
+                            <li id="center-btn">
+                                <input
+                                    type="submit"
+                                    id="join-btn"
+                                    name="Login"
+                                    alt="Login"
+                                    value="Login"
+                                />
+                            </li>
+                        </ul>
+                    </form>
+                    {error && <p className="error-message">{error}</p>}
+                </div>
+            </div>
+        </div>
     );
-}
+};
 
-export default TestPage2;
+export default LoginForm;
