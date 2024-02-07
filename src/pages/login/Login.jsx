@@ -1,19 +1,33 @@
 import './Login.css';
-import {useState} from "react";
+import {useContext, useState} from "react";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContextProvider.jsx";
 
 
 function Login() {
+
+
+
 
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const enabled = true
-    const [error, toggleError] = useState(false);
+
+    const [error1, toggleError1] = useState(false);
+    const [error2, toggleError2] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
 
-    async function createUser(e) {
+    // registreer functie
+    async function handleForm1Submit (e) {
         e.preventDefault();
+        toggleError2(false);
+        toggleLoading(true);
+
         try {
 
             const response = await axios.post('http://localhost:8080/users', {
@@ -22,7 +36,9 @@ function Login() {
                 email: email,
                 enabled : enabled
             });
+
             console.log(response.data);
+
         } catch (error) {
             console.error(error);
         }
@@ -39,29 +55,35 @@ function Login() {
 
 
 
-    async function HandleSubmit(e) {
+
+
+    // login functie
+    async function handleForm2Submit(e) {
         e.preventDefault();
-        toggleError(false);
+        toggleError1(false);
         try {
             const response = await axios.post('http://localhost:8080/authenticate', {
                 username: username,
                 password: password
             });
             console.log(response.data);
+            login(response.data.jwt);
+            navigate('/profile'); // redirect to profile page
+
         } catch (error) {
             console.error(error);
-            toggleError(true);
+            toggleError1(true);
         }
     }
 
-    async function fetchData() {
-        try {
-            const response = await axios.get('http://localhost:8080/authenticated');
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    // async function fetchData() {
+    //     try {
+    //         const response = await axios.get('http://localhost:8080/authenticated');
+    //         console.log(response.data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
 
 
 
@@ -80,7 +102,7 @@ function Login() {
             <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
             <p>The Future Is Here</p>
             <ul className="noBullet">
-                <form onSubmit={HandleSubmit}>
+                <form onSubmit={handleForm2Submit}>
 
                 <li>
                     <label htmlFor="username"></label>
@@ -101,12 +123,13 @@ function Login() {
                            className="inputFields"
                            id="password"
                            name="password"
-                            value={password}
+                           value={password}
                            placeholder="Password"
-                            required
+                           required
                            onChange={(e) => setPassword(e.target.value)}/>
 
                 </li>
+                    {error1 && <p className="error">Combinatie van username en wachtwoord is onjuist</p>}
                 <li id="center-btn">
                     <input type="submit" id="join-btn1" name="Login" alt="Login" value="Login"/>
                 </li>
@@ -117,7 +140,7 @@ function Login() {
 
 
 
-        <form onSubmit={(e) => createUser(e)} className="signupForm">
+        <form  onSubmit={handleForm1Submit} className="signupForm">
             <h2>Sign Up</h2>
             <ul className="noBullet">
                     <li>
@@ -153,6 +176,9 @@ function Login() {
                             placeholder="Email"
                             onChange={(e) => setEmail(e.target.value)}/>
                 </li>
+                {error2 && <p className="error">Dit account bestaat al. Probeer een ander emailadres.</p>}
+
+
                 <li id="center-btn">
                     <input type="submit" id="join-btn" name="join" alt="Join" value="Join"/>
                 </li>

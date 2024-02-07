@@ -53,14 +53,14 @@ function AuthContextProvider({ children }) {
         });
 
         console.log('Gebruiker is uitgelogd!');
-        history.push('/');
+        navigate('/');
     }
 
     // Omdat we deze functie in login- en het mounting-effect gebruiken, staat hij hier gedeclareerd!
     async function fetchUserData(id, token, redirectUrl) {
         try {
             // haal gebruikersdata op met de token en id van de gebruiker
-            const result = await axios.get(`http://localhost:8080/authenticated${id}`, {
+            const result = await axios.get(`http://localhost:8080/users/${id}`, {
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ function AuthContextProvider({ children }) {
             // als er een redirect URL is meegegeven (bij het mount-effect doen we dit niet) linken we hiernnaartoe door
             // als we de history.push in de login-functie zouden zetten, linken we al door voor de gebuiker is opgehaald!
             if (redirectUrl) {
-                history.push(redirectUrl);
+                navigate(redirectUrl);
             }
 
         } catch (e) {
@@ -105,7 +105,7 @@ function AuthContextProvider({ children }) {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {children}
+            {isAuth.status === 'done' ? children : <p>Loading...</p>}
         </AuthContext.Provider>
     );
 }
