@@ -9,6 +9,8 @@ function Login() {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const enabled = true
+    const [error, toggleError] = useState(false);
+
 
     async function createUser(e) {
         e.preventDefault();
@@ -35,8 +37,11 @@ function Login() {
         }
     }
 
-    async function loginUser(e) {
+
+
+    async function HandleSubmit(e) {
         e.preventDefault();
+        toggleError(false);
         try {
             const response = await axios.post('http://localhost:8080/authenticate', {
                 username: username,
@@ -45,6 +50,7 @@ function Login() {
             console.log(response.data);
         } catch (error) {
             console.error(error);
+            toggleError(true);
         }
     }
 
@@ -74,13 +80,14 @@ function Login() {
             <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
             <p>The Future Is Here</p>
             <ul className="noBullet">
-                <form onSubmit={(e) => loginUser(e)}>
+                <form onSubmit={HandleSubmit}>
 
                 <li>
                     <label htmlFor="username"></label>
                     <input type="text"
                            className="inputFields"
                            id="username"
+                           value={username}
                            name="username"
                            placeholder="Username"
                            required
@@ -94,13 +101,14 @@ function Login() {
                            className="inputFields"
                            id="password"
                            name="password"
+                            value={password}
                            placeholder="Password"
                             required
                            onChange={(e) => setPassword(e.target.value)}/>
 
                 </li>
                 <li id="center-btn">
-                    <input type="submit" id="join-btn" name="Login" alt="Login" value="Login"/>
+                    <input type="submit" id="join-btn1" name="Login" alt="Login" value="Login"/>
                 </li>
             </form>
                 </ul>

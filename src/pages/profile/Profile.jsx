@@ -8,7 +8,7 @@ function Profile() {
                 <h2>Profile</h2>
                 <p>Email: example@example.com</p>
                 <p>Username: example_user</p>
-                <p>Password: ********</p>
+                <p>Password: ******** </p>
             </div>
         </>
     );
