@@ -21,6 +21,7 @@ function AuthContextProvider({ children }) {
         // als er WEL een token is, haal dan opnieuw de gebruikersdata op
         if (token) {
             const decoded = jwtDecode(token);
+            console.log('decoded', decoded);
             fetchUserData(decoded.sub, token);
         } else {
             // als er GEEN token is doen we niks, en zetten we de status op 'done'
@@ -39,7 +40,7 @@ function AuthContextProvider({ children }) {
         const decoded = jwtDecode(JWT);
 
         // geef de ID, token en redirect-link mee aan de fetchUserData functie (staat hieronder)
-        fetchUserData(decoded.sub, JWT, '/profile');
+        fetchUserData(decoded.sub, JWT, '/Profile');
         // link de gebruiker door naar de profielpagina
         // history.push('/profile');
     }

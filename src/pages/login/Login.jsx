@@ -149,6 +149,7 @@ function Login() {
                             className="inputFields"
                             type="text"
                             name="username"
+                            required
                             value={username}
                             placeholder="Username"
                             id="username"
@@ -160,6 +161,7 @@ function Login() {
                             className="inputFields"
                             type="password"
                             name="password"
+                            required
                             value={password}
                             id="password"
                             placeholder="Password"
@@ -171,6 +173,7 @@ function Login() {
                             className="inputFields"
                             type="email"
                             name="email"
+                            required
                             value={email}
                             id="email"
                             placeholder="Email"
