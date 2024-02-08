@@ -46,6 +46,7 @@ function Profile() {
                         <p> <strong>Email:</strong>  {user.email}</p>
                         <p> <strong>Username:</strong> {user.username}</p>
                         <p><strong>Password:</strong> ******** </p>
+                        <p><strong>User role:</strong> {user.role} </p>
 
                     </div>
 
