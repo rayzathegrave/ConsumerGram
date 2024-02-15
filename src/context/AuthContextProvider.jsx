@@ -33,6 +33,9 @@ function AuthContextProvider({ children }) {
         }
     }, []);
 
+
+
+
     function login(JWT) {
         // zet de token in de Local Storage
         localStorage.setItem('token', JWT);
@@ -101,6 +104,7 @@ function AuthContextProvider({ children }) {
     const contextData = {
         isAuth: isAuth.isAuth,
         user: isAuth.user,
+
         login: login,
         logout: logout,
     };
