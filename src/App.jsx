@@ -7,6 +7,7 @@ import {Routes, Route, Navigate} from "react-router-dom";
 import {Helmet} from "react-helmet";
 import Nav from "./components/navigation/Nav.jsx";
 import MakePost from "./pages/makePost/MakePost.jsx";
+import ProfilePost from "./pages/profilepost/ProfilePost.jsx";
 import {AuthContext} from "./context/AuthContextProvider.jsx";
 import {useContext} from "react";
 
@@ -30,6 +31,7 @@ const {isAuth} = useContext(AuthContext);
                 <Route path="/Profile" element={isAuth ? <Profile /> : <Navigate to="/" />} />
                 <Route path="/Makepost" element={isAuth ? <MakePost /> : <Navigate to="/" />} />
 
+                <Route path="/ProfilePost/:id" element={<div><Helmet><title>ConsumerGram | Post  </title></Helmet><ProfilePost /></div>}/>
             </Routes>
 
         </>
