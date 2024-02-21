@@ -12,8 +12,10 @@ export const SearchProvider = ({ children }) => {
         const filtered = blogPosts.filter(post =>
             post.caption.toLowerCase().includes(searchQuery.toLowerCase()) ||
             post.price.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.username.toLowerCase().includes(searchQuery.toLowerCase())
-
+            post.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (Array.isArray(post.categories) && post.categories.some(category =>
+                category.toLowerCase().includes(searchQuery.toLowerCase()))) ||
+            (post.yesNoOption ? 'yes' : 'no').includes(searchQuery.toLowerCase())
 
         );
         setFilteredPosts(filtered);
