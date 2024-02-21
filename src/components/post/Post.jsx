@@ -11,7 +11,6 @@ function Post() {
     console.log(blogPosts)
 
 
-
     return (
         <>
             <section className="postContainerOuter">
@@ -23,11 +22,14 @@ function Post() {
                             <h2>{post.caption}</h2>
                             <p>Posted by: {post.username}</p>
 
-                            <img src={"data:image/png;base64,"+post.fileContent} alt={post.caption}/>
+                            <img src={"data:image/png;base64," + post.fileContent} alt={post.caption}/>
 
                             <p> Category: {post.categories}</p>
+                            <p>Price: {post.price}</p>
 
-                            <Link  to={`/ProfilePost/${post.id}`}> <p className="postlink"> see post </p> </Link>
+                            <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
+
+                            <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p></Link>
 
                         </div>
                     ))}

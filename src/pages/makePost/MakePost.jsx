@@ -8,6 +8,25 @@ import useProfileImage from "../../hooks/useProfileImage.jsx";
 function MakePost() {
 
 
+    const [value, setValue] = useState('');
+    const handleChange = (event) => {
+        const {value: inputValue} = event.target;
+        // Alleen toestaan: getallen, komma's, dollar- en eurotekens
+        const regex = /^[0-9,€$-]*$/;
+        if (regex.test(inputValue)) {
+            setValue(inputValue);
+        }
+    }
+
+    const YesNoButton = ({onClick, value}) => {
+        return (
+            <button className="yesNoButton" onClick={() => onClick(value)}>
+                {value}
+            </button>
+        );
+    };
+
+
     return (
         <>
             <form action="">
@@ -34,6 +53,15 @@ function MakePost() {
 
                         />
 
+                        <p>price: </p>
+
+                        <input
+                            type="text"
+                            value={value}
+                            onChange={handleChange}
+                            placeholder="Enter numbers, commas, €, $ or -"
+                        />
+
 
                         <p>Category: </p><select>
                         <option value="Cars">Cars</option>
@@ -43,6 +71,10 @@ function MakePost() {
                         <option value="Houses">Houses</option>
                         <option value="Other">Other</option>
                     </select>
+
+                        <p>Would you recommend this product?</p>
+                        <YesNoButton onClick={(value) => (value)} value="Yes"/>
+                        <YesNoButton onClick={(value) => (value)} value="No"/>
 
 
                         <br/>

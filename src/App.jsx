@@ -10,6 +10,7 @@ import MakePost from "./pages/makePost/MakePost.jsx";
 import ProfilePost from "./pages/profilepost/ProfilePost.jsx";
 import {AuthContext} from "./context/AuthContextProvider.jsx";
 import {useContext} from "react";
+import MyPost from "./pages/mypost/MyPost.jsx";
 
 function App() {
 
@@ -30,6 +31,8 @@ const {isAuth} = useContext(AuthContext);
 
                 <Route path="/Profile" element={isAuth ? <Profile /> : <Navigate to="/" />} />
                 <Route path="/Makepost" element={isAuth ? <MakePost /> : <Navigate to="/" />} />
+
+                <Route path="/MyPost" element={<div><Helmet><title>ConsumerGram | My Post</title></Helmet><MyPost /></div>}/>
 
                 <Route path="/ProfilePost/:id" element={<div><Helmet><title>ConsumerGram | Post  </title></Helmet><ProfilePost /></div>}/>
             </Routes>

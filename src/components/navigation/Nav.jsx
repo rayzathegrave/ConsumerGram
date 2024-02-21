@@ -2,11 +2,13 @@ import './Nav.css';
 import {Link, NavLink} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
+import searchbar from "../searchbar/Searchbar.jsx";
+import Searchbar from "../searchbar/Searchbar.jsx";
 
 
 function Nav() {
 
-    const {isAuthenticated, logout} = useContext(AuthContext);
+    const {isAuth, logout} = useContext(AuthContext);
     return (
         <>
 
@@ -23,33 +25,46 @@ function Nav() {
                         </li>
                     </div>
 
-                    <div className="search">
-                        <form action="">
-                            <input className="searchbar" type="search" placeholder="Search ConsumerGram"/>
-                        </form>
-                    </div>
+                    {/*<div className="search">*/}
+                    {/*    <form action="">*/}
+                    {/*        <input className="searchbar" type="search" placeholder="Search ConsumerGram"/>*/}
+                    {/*    </form>*/}
+                    {/*</div>*/}
+
+                    <Searchbar/>
+
+
+                    {/*-----------------------------SWITCH TUSSEN LOGOUT EN LOGIN--------------------------*/}
+                    {/*Ingelogd? Deze code laat logout zien*/}
+                    {isAuth && (
+                        <li><Link
+                            onClick={(e) => {
+                                e.preventDefault();
+                                logout();
+                            }} to="/">Logout
+                        </Link></li>
+                    )}
+                    {/*Uitgelogd? Deze code laat login zien*/}
+                    {!isAuth && (
+                        <div className="navlogin">
+                            <li>
+                                <NavLink to="/login"
+                                         className={({isActive}) => isActive === true ? 'active-link' : 'default-link'}>
+                                    <h1>Login</h1></NavLink>
+                            </li>
+                        </div>
+                    )}
+                    {/*-------------------------------------------------------*/}
 
 
                     <div className="navlogin">
-                        <button className="dropbtn"><h1>Login</h1></button>
+                        <button className="dropbtn"><h1>Account</h1></button>
                         <div className="dropdown-content2">
-                            <li><Link to="/login"> Login</Link></li>
-                            {/*<li><Link to="/"> Logout</Link></li>*/}
-
-                            <li><Link
-                                onClick={(e) => {
-                                    e.preventDefault(); logout();}} to="/">Logout
-                            </Link></li>
+                            <li><Link to="/profile"> Profile</Link></li>
+                            <li><Link to="/MyPost"> My post</Link></li>
                         </div>
                     </div>
 
-
-                    <div className="navprofile">
-                        <li><NavLink to="/Profile"
-                                     className={({isActive}) => isActive === true ? 'active-link' : 'default-link'}>
-                            <h1>Profile</h1></NavLink>
-                        </li>
-                    </div>
 
                     <div className="makepost">
                         <li>
@@ -58,7 +73,6 @@ function Nav() {
                                 <h1>Make
                                     Post</h1></NavLink>
                         </li>
-
                     </div>
 
                 </ul>

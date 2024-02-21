@@ -124,6 +124,7 @@ nav ul {
         transition: opacity 0.7s ease;
         top: 100%; /* Position below dropdown button */
         left: -25%; /* Align with left edge of dropdown button */
+        right: -25%; /* Align with right edge of dropdown button */
         /*background-color: #fff; !* Adjust as needed *!*/
         border: 1px solid #ccc; /* Adjust as needed */
         border-radius: 8px;
@@ -145,8 +146,8 @@ nav ul {
     }
 
     /* Apply margin to items below dropdown content */
-    .navlogin:hover ~ .navprofile,
-    .navlogin:hover ~ .searchbar {
+    .navlogin:hover ~ .makepost,
+    .navlogin:hover ~ .makepost {
         margin-top: 100px; /* Adjust as needed */
     }
 }

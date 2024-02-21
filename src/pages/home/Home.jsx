@@ -6,13 +6,14 @@ import Post from "../../components/post/Post.jsx";
 function Home() {
     return (
         <>
-<div className="pimsouterbox">
-            <div className= "cat" >
-                <Categories/>
-            </div>
+            <div className="pimsouterbox">
 
-            <Post/>
-        </div>
+                <div className="cat">
+                    <Categories/>
+                </div>
+
+                <Post/>
+            </div>
 
         </>
     );

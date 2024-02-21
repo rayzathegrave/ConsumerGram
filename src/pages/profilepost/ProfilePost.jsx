@@ -10,6 +10,7 @@ function profilePost() {
     const {blogPosts} = useBlogPosts();
     const post = blogPosts.find(post => post.id.toString() === id); // Zoek de blogpost met het overeenkomende ID
 
+
     if (!post) {
         return <div>Blogpost niet gevonden</div>; // Toon een foutmelding als de blogpost niet wordt gevonden
     }
@@ -21,18 +22,21 @@ function profilePost() {
                 <div className="inner-content-containerSolo">
 
 
+                    <div className="blog-post-solo">
+                        <h2>{post.caption}</h2>
+                        <p>Posted by: {post.username}</p>
 
-                        <div  className="blog-post-solo">
-                            <h2>{post.caption}</h2>
-                            <p>Posted by: {post.username}</p>
+                        <img src={"data:image/png;base64," + post.fileContent} alt={post.caption}/>
 
-                            <img src={"data:image/png;base64,"+post.fileContent} alt={post.caption}/>
+                        <p> Category: {post.categories}</p>
 
-                            <p> Category: {post.categories}</p>
+                        <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
 
-                            {/*<Link to={`/ProfilePost/${post.id}`}>Go to profile</Link>*/}
+                        <p>Price: {post.price}</p>
 
-                        </div>
+                        {/*<Link to={`/ProfilePost/${post.id}`}>Go to profile</Link>*/}
+
+                    </div>
 
 
                 </div>
