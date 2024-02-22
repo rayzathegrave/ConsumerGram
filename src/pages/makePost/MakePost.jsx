@@ -7,6 +7,18 @@ import useProfileImage from "../../hooks/useProfileImage.jsx";
 
 function MakePost() {
 
+    const {user} = useContext(AuthContext);
+    const [formData, setFormData] = useState({
+        caption: "",
+        price: "",
+        file: null,
+        yesNoOption: false,
+        username: `${user.username}`,
+        categories: [''],
+
+    });
+
+    const [uploadStatus, setUploadStatus] = useState(null);
 
     const [value, setValue] = useState('');
     const handleChange = (event) => {
@@ -18,13 +30,84 @@ function MakePost() {
         }
     }
 
-    const YesNoButton = ({onClick, value}) => {
-        return (
-            <button className="yesNoButton" onClick={() => onClick(value)}>
-                {value}
-            </button>
-        );
+
+    const handleChangeCaption = (event) => {
+        const {name, value} = event.target;
+        setFormData({...formData, [name]: value});
     };
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        setFormData({...formData, file: file});
+    };
+
+    const handleChangePrice = (event) => {
+        const {name, value} = event.target;
+        setFormData({...formData, [name]: value});
+    };
+
+
+    // const handleChangeCategories = (event) => {
+    //     const {value} = event.target;
+    //     setFormData({...formData, categories: value});
+    // };
+
+    const handleChangeCategories = (event) => {
+    const {value} = event.target;
+    // console.log("Selected category:", value); // Add this line
+    setFormData({...formData, categories: value});
+};
+
+
+
+
+    const handleChangeYesOrNo = (event, value) => {
+        event.preventDefault();
+        setFormData({...formData, yesNoOption: value === 'Yes' ? true : false});
+    };
+
+
+    async function uploadGegevens(event) {
+        event.preventDefault();
+
+        const url = `http://localhost:8080/blog-posts/${user.username}`;
+        console.log(user.username)
+        const formDataToSend = new FormData();
+        formDataToSend.append("caption", formData.caption);
+        formDataToSend.append("price", formData.price);
+        formDataToSend.append("file", formData.file); // Voeg het bestand toe aan de FormData
+
+        // // Voeg de overige velden toe aan de FormData
+        formDataToSend.append("categories", formData.categories);
+        // formDataToSend.append("yesOrNo", formData.yesNoOption);
+        formDataToSend.append("yesNoOption", formData.yesNoOption);
+        formDataToSend.append("username", formData.username);
+
+        console.log('form', formDataToSend)
+
+        try {
+            const response = await axios.post(url, formDataToSend, {
+                headers: {
+                    "Content-Type": "multipart/form-data", // Stel de juiste Content-Type header in
+                }
+            }); // Verstuur POST-verzoek met Axios
+
+            if (response.status === 201) {
+                console.log("Blog post successful!");
+                setUploadStatus("Upload is gelukt!");
+                console.log('form', formDataToSend)
+            } else {
+                console.error("Error posting blog:", response.statusText);
+                setUploadStatus("Er is een fout opgetreden bij het uploaden.");
+                console.log('form', formDataToSend)
+            }
+        } catch (error) {
+            console.error("Error posting blog:", error);
+            setUploadStatus("Er is een netwerkfout opgetreden.");
+        }
+    }
+
+
 
 
     return (
@@ -36,51 +119,97 @@ function MakePost() {
                     <div className="innermakepost">
                         <h2> Share Your consumerism</h2>
                         <br/>
-                        <p> Caption:</p>
-                        <input type="text"/>
 
-                        <p> Picture:</p>
 
-                        <label htmlFor="profilePhotoUpload">
-
+                        <label className="textStart" htmlFor="caption">
+                            {/*<p>Caption: </p>*/}
                         </label>
-                        <input
-                            className="ProfilePictureUpload"
-                            type="file"
-                            accept=".jpg, .jpeg, .png"
-                            name="profilePhotoUpload"
-                            id="profilePhotoUpload"
 
-                        />
 
-                        <p>price: </p>
 
                         <input
+                            className="textAreaOneLine"
                             type="text"
-                            value={value}
-                            onChange={handleChange}
-                            placeholder="Enter numbers, commas, €, $ or -"
+                            name="caption"
+                            id="caption"
+                            autoComplete="on"
+                            value={formData.caption}
+                            onChange={handleChangeCaption}
+                            placeholder="Caption"
                         />
 
 
-                        <p>Category: </p><select>
-                        <option value="Cars">Cars</option>
-                        <option value="Tech">Tech</option>
-                        <option value="Decoration">Decoration</option>
-                        <option value="Clothes">Clothes</option>
-                        <option value="Houses">Houses</option>
-                        <option value="Other">Other</option>
-                    </select>
 
-                        <p>Would you recommend this product?</p>
-                        <YesNoButton onClick={(value) => (value)} value="Yes"/>
-                        <YesNoButton onClick={(value) => (value)} value="No"/>
+
+                        <label className="textStart" htmlFor="fileUpload">
+                            <br/>
+                            {/*<p> Picture:</p>*/}
+                        </label>
+                        <br/>
+
+                        <div className="file-upload-container">
+                            <input
+                                className="textAreaOneLine"
+                                type="file"
+                                accept=".jpg, .jpeg, .png"
+                                name="file"
+                                id="fileUpload"
+                                onChange={handleFileChange}
+                            />
+                            <label htmlFor="fileUpload">Upload File</label>
+                        </div>
+
+
+                        <label className="textStart" htmlFor="price">
+                            <br/>
+                            {/*<p>Price: </p>*/}
+                        </label>
+
+                        <div className="input-container">
+                            <input
+                                type="text"
+                                name="price"
+                                id="price"
+                                autoComplete="on"
+                                value={formData.price}
+                                onChange={handleChangePrice}
+                                placeholder="Enter numbers, commas, €, $ or -"
+                            />
+                        </div>
+
+
+                        <div className="select-container">
+                            <br/>
+                            {/*<p>Category: </p>*/}
+                            <select onChange={handleChangeCategories}>
+                                <option value="please select a category">please select a category</option>
+                                <option value="Cars">Cars</option>
+                                <option value="Tech">Tech</option>
+                                <option value="Decoration">Decoration</option>
+                                <option value="Clothes">Clothes</option>
+                                <option value="Houses">Houses</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                        </div>
+
+
+                        <label htmlFor="yesNo">
+                            <p> Would you recommend this product?</p>
+                        </label>
+
+
+                        <button className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "Yes")}>Yes</button>
+                        <button className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "No")}>No</button>
 
 
                         <br/>
                         <br/>
                         {/*{warning && <p>{warning}</p>}*/}
-                        <button className="postbutton" type="submit">post</button>
+                        <button className="postbutton" type="submit" onClick={uploadGegevens}>Post</button>
+                        {uploadStatus && <p>{uploadStatus}</p>}
+
+                        {/*<button className="postbutton" type="submit">post</button>*/}
                     </div>
                 </div>
 
@@ -90,3 +219,13 @@ function MakePost() {
 }
 
 export default MakePost;
+
+
+//
+// const YesNoButton = ({onClick, value}) => {
+//     return (
+//         <button className="yesNoButton" onClick={() => onClick(value)}>
+//             {value}
+//         </button>
+//     );
+// };

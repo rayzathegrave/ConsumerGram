@@ -22,7 +22,7 @@
         background: rgba(20, 20, 20, .6);
         font-size: 18px;
         color: white;
-        margin-top: 20px;
+        /*margin-top: 20px;*/
         padding: 10px 50px;
         cursor: pointer;
         transition: .4s;
@@ -37,7 +37,7 @@
     background: rgba(20, 20, 20, .6);
     font-size: 18px;
     color: white;
-    margin-top: 20px;
+    margin-top: 3px;
     padding: 10px 50px;
     cursor: pointer;
     transition: .4s;
@@ -47,6 +47,110 @@
     background: rgba(20, 20, 20, .8);
     padding: 10px 80px;
 }
+
+
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+.select-container select {
+    appearance: none;
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.select-container select:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+.select-container::before {
+    content: '\25BC';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.input-container input {
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px 50px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.input-container input:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+.input-container::before {
+    content: '\1F4B8';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+}
+
+.file-upload-container {
+    position: relative;
+    margin-bottom: 10px;
+
+}
+
+.file-upload-container input[type="file"] {
+    display: none;
+}
+
+.file-upload-container label {
+    cursor: pointer;
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px 50px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.file-upload-container label:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+
+.textAreaOneLine {
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.textAreaOneLine:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
 
 
 

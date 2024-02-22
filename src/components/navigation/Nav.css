@@ -104,7 +104,8 @@ nav ul {
     }
 
     .searchbar {
-        width: 400px;
+        margin-top: 5px;
+        width: 350px;
         display: flex;
         padding-left: 15px;
         padding-right: 15px;

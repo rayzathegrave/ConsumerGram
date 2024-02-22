@@ -33,3 +33,11 @@
     height: 10vh;
 
 }
+
+@media (max-width: 768px) {
+    .fundiv {
+
+        text-align: center;
+
+    }
+}

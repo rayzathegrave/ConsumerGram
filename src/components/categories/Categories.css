@@ -2,8 +2,10 @@
 .catlist {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin: 0px;
+    align-items: center;
+    list-style-type: none;
+    padding: 20px;
+
 
     width: 170px;
     height: 100vh;
@@ -11,6 +13,24 @@
     border-right: #242C2E solid 1px;
     border: 5px solid hotpink;
 }
+
+.categoryItem {
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: rgba(20, 20, 20, .6);
+    color: white;
+    border: 1px solid rgba(10, 180, 180, 1);
+    border-radius: 4px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.catlist h3 {
+    margin: 0 0 10px;
+}
+
+
+
 
 @media screen and (max-width: 600px) {
     .catlist {

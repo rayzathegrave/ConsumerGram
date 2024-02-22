@@ -14,6 +14,7 @@ function Post() {
     // console.log(blogPosts)
 
     const {filteredPosts} = useContext(SearchContext);
+
     //
     // const filtered = blogPosts.filter((post) => {
     //     post.caption.toLowerCase().includes(searchQuery.toLowerCase())
