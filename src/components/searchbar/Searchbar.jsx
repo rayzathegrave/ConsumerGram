@@ -8,6 +8,8 @@ const Searchbar = () => {
     const handleChange = (event) => {
         setSearchQuery(event.target.value);
 
+
+
     };
 
     return (

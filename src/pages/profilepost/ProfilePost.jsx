@@ -36,6 +36,9 @@ function profilePost() {
 
                         {/*<Link to={`/ProfilePost/${post.id}`}>Go to profile</Link>*/}
 
+
+                        <Link to={`/PublicProfile/${post.username}`}><p>Visit the profile of this consumer{post.username}</p> </Link>
+
                     </div>
 
 

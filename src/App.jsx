@@ -11,30 +11,43 @@ import ProfilePost from "./pages/profilepost/ProfilePost.jsx";
 import {AuthContext} from "./context/AuthContextProvider.jsx";
 import {useContext} from "react";
 import MyPost from "./pages/mypost/MyPost.jsx";
+import MakePublicProfile from "./pages/makePublicProfile/MakePublicProfile.jsx";
+import PublicProfile from "./pages/publicProfile/PublicProfile.jsx";
 
 function App() {
 
-const {isAuth} = useContext(AuthContext);
+    const {isAuth} = useContext(AuthContext);
 
     return (
         <>
 
-            <Nav />
+            <Nav/>
 
             <Routes>
                 {/*<Route path="/" element={<Home/>}/>*/}
-                <Route path="/" element={<div><Helmet><title>ConsumerGram | Home</title></Helmet><Home /></div>}/>
-                <Route path="/login" element={<div><Helmet><title>ConsumerGram | Login</title></Helmet><Login /></div>}/>
-                {/*<Route path="/Profile" element={<div><Helmet><title>ConsumerGram | Profile</title></Helmet><Profile /></div>}/>*/}
-                {/*<Route path="/Makepost" element={<div><Helmet><title>ConsumerGram | Make post</title></Helmet><MakePost /></div>}/>*/}
-                <Route path="*" element={<div><Helmet><title>ConsumerGram | NotFound</title></Helmet><NotFound /></div>}/>
+                <Route path="/" element={<div><Helmet><title>ConsumerGram | Home</title></Helmet><Home/></div>}/>
 
-                <Route path="/Profile" element={isAuth ? <Profile /> : <Navigate to="/" />} />
-                <Route path="/Makepost" element={isAuth ? <MakePost /> : <Navigate to="/" />} />
+                <Route path="/login" element={<div><Helmet><title>ConsumerGram | Login</title></Helmet><Login/></div>}/>
 
-                <Route path="/MyPost" element={<div><Helmet><title>ConsumerGram | My Post</title></Helmet><MyPost /></div>}/>
+                <Route path="/PublicProfile" element={<div><Helmet><title>ConsumerGram | Public Profile</title></Helmet><PublicProfile /></div>}/>
+                <Route path="/MakePublicProfile" element={<div><Helmet><title>ConsumerGram | Make Public Profile</title>
+                </Helmet><MakePublicProfile/></div>}/>
 
-                <Route path="/ProfilePost/:id" element={<div><Helmet><title>ConsumerGram | Post  </title></Helmet><ProfilePost /></div>}/>
+
+                <Route path="*"
+                       element={<div><Helmet><title>ConsumerGram | NotFound</title></Helmet><NotFound/></div>}/>
+
+                <Route path="/Profile" element={<div><Helmet><title>ConsumerGram | Profile</title></Helmet>{isAuth ? <Profile/> : <Navigate to="/login"/>}</div>}/>
+                <Route path="/Makepost" element={<div><Helmet><title>ConsumerGram | Make Post</title></Helmet>{isAuth ? <MakePost/> : <Navigate to="/login"/>}</div>}/>
+                <Route path="/MyPost" element={<div><Helmet><title>ConsumerGram | My Post</title></Helmet>{isAuth ? <MyPost/> : <Navigate to="/login"/>}</div>}/>
+
+
+                <Route path="/ProfilePost/:id"
+                       element={<div><Helmet><title>ConsumerGram | Post </title></Helmet><ProfilePost/></div>}/>
+
+                <Route path="/PublicProfile/:username" element={<div><Helmet><title>ConsumerGram | Profile </title></Helmet><PublicProfile/></div>}/>
+
+
             </Routes>
 
         </>

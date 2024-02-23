@@ -137,7 +137,8 @@ function Profile() {
 
                     <div className="fundiv">
                         <h2>Only you (and the FBI) can see this information</h2>
-                        <p>Back to the <Link to="/">Homepage</Link></p>
+                        <p> Make a public profile <Link to="/makepublicprofile">Go here</Link></p>
+                        <p> Already have one? <Link to={`/PublicProfile/${user.username}`}>Go here</Link></p>
                     </div>
 
                 </section>
