@@ -13,10 +13,11 @@ import {useContext} from "react";
 import MyPost from "./pages/mypost/MyPost.jsx";
 import MakePublicProfile from "./pages/makePublicProfile/MakePublicProfile.jsx";
 import PublicProfile from "./pages/publicProfile/PublicProfile.jsx";
+import AdminPage from "./pages/adminPage/AdminPage.jsx";
 
 function App() {
 
-    const {isAuth} = useContext(AuthContext);
+    const {isAuth, user} = useContext(AuthContext);
 
     return (
         <>
@@ -29,7 +30,9 @@ function App() {
 
                 <Route path="/login" element={<div><Helmet><title>ConsumerGram | Login</title></Helmet><Login/></div>}/>
 
-                <Route path="/PublicProfile" element={<div><Helmet><title>ConsumerGram | Public Profile</title></Helmet><PublicProfile /></div>}/>
+                <Route path="/PublicProfile"
+                       element={<div><Helmet><title>ConsumerGram | Public Profile</title></Helmet><PublicProfile/>
+                       </div>}/>
                 <Route path="/MakePublicProfile" element={<div><Helmet><title>ConsumerGram | Make Public Profile</title>
                 </Helmet><MakePublicProfile/></div>}/>
 
@@ -37,16 +40,28 @@ function App() {
                 <Route path="*"
                        element={<div><Helmet><title>ConsumerGram | NotFound</title></Helmet><NotFound/></div>}/>
 
-                <Route path="/Profile" element={<div><Helmet><title>ConsumerGram | Profile</title></Helmet>{isAuth ? <Profile/> : <Navigate to="/login"/>}</div>}/>
-                <Route path="/Makepost" element={<div><Helmet><title>ConsumerGram | Make Post</title></Helmet>{isAuth ? <MakePost/> : <Navigate to="/login"/>}</div>}/>
-                <Route path="/MyPost" element={<div><Helmet><title>ConsumerGram | My Post</title></Helmet>{isAuth ? <MyPost/> : <Navigate to="/login"/>}</div>}/>
+                <Route path="/Profile"
+                       element={<div><Helmet><title>ConsumerGram | Profile</title></Helmet>{isAuth ? <Profile/> :
+                           <Navigate to="/login"/>}</div>}/>
+                <Route path="/Makepost"
+                       element={<div><Helmet><title>ConsumerGram | Make Post</title></Helmet>{isAuth ? <MakePost/> :
+                           <Navigate to="/login"/>}</div>}/>
+                <Route path="/MyPost"
+                       element={<div><Helmet><title>ConsumerGram | My Post</title></Helmet>{isAuth ? <MyPost/> :
+                           <Navigate to="/login"/>}</div>}/>
 
 
                 <Route path="/ProfilePost/:id"
                        element={<div><Helmet><title>ConsumerGram | Post </title></Helmet><ProfilePost/></div>}/>
 
-                <Route path="/PublicProfile/:username" element={<div><Helmet><title>ConsumerGram | Profile </title></Helmet><PublicProfile/></div>}/>
+                <Route path="/PublicProfile/:username"
+                       element={<div><Helmet><title>ConsumerGram | Profile </title></Helmet><PublicProfile/></div>}/>
 
+
+                <Route
+                    path="/AdminPage"
+                    element={<div><Helmet><title>ConsumerGram | Admin </title></Helmet>{isAuth && user.role === 'ROLE_ADMIN' ? <AdminPage /> : <Navigate to="/login" />}</div>}
+                />
 
             </Routes>
 

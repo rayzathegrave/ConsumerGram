@@ -69,6 +69,11 @@
     text-align: center;
 }
 
+.totalBlogsCounter{
+    text-align: center;
+    margin: 20px 0;
+}
+
 @media (max-width: 768px) {
     .fundiv {
         text-align: center;

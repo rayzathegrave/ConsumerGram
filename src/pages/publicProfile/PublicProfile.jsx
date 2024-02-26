@@ -26,65 +26,71 @@ function PublicProfile() {
 
     return (
         <>
-            <div className="profile-container">
+
+
                 <div className="inner-content-container-column">
+
                     {/* Als er een gebruikersprofiel is gevonden, toon dan de gegevens */}
                     {filteredProfile.length > 0 ? (
                         filteredProfile.map((prof) => (
                             <>
+                            <div className="profile-container">
                                 <img
                                     src={"data:image/png;base64," + prof.fileContent}
                                     alt="Profiel foto"
                                     style={{width: 100, height: 100}}/>
 
-                                <p>Username: {prof.username}</p>
-                                <p>Profielpagina van {prof.name}</p>
-                                <p>Email: {prof.email}</p>
-                                <p>Region: {prof.regio}</p>
-                                <p>Bio: {prof.bio}</p>
+                                <p><strong>Username: </strong>{prof.username}</p>
+                                <p><strong>Profile: </strong>{prof.name}</p>
+                                <p> <strong>Email: </strong>{prof.email}</p>
+                                <p> <strong>Region: </strong>{prof.regio}</p>
+                                <p><strong>Bio: </strong>{prof.bio}</p>
                                 <br/><br/>
 
+                            </div>
+                                <div className="fundiv">
+                                    <h2>Everyone (including the FBI) can see this information</h2>
+                                    <p>Back to the <Link to="/">Homepage</Link></p>
+                                </div>
 
                                 <strong><p className="totalBlogsCounter"> {username} already
                                     has {totalPosts} contributions</p>
                                 </strong>
 
 
+                                {filteredPosts.map((post) => (
+                                    <li key={post.id} className="blog-post-item">
+                                        <Link to={`/ProfilePost/${post.id}`} className="post-link">
+                                            <div className="post-image">
+                                                <div className="onTopOfImageBox">
+                                                    <p className="post-title">{post.caption}</p>
+                                                    <p>Written by: {post.username}</p>
+                                                    <img src={"data:image/png;base64," + post.fileContent} alt={post.caption}/>
+
+                                                    <p> Category: {post.categories}</p>
+                                                    <p>Price: {post.price}</p>
+
+                                                    <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
+
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                ))}
+
                             </>
                         ))
+
+
+
                     ) : (
+
+
                         // Als er geen gebruikersprofiel is gevonden, toon dan dit bericht
                         <p>This user doesnt have a public profile :(</p>
                     )}
                 </div>
-            </div>
 
-            <div className="fundiv">
-                <h2>Everyone (including the FBI) can see this information</h2>
-                <p>Back to the <Link to="/">Homepage</Link></p>
-            </div>
-
-
-
-                    {filteredPosts.map((post) => (
-                        <li key={post.id} className="blog-post-item">
-                            <Link to={`/ProfilePost/${post.id}`} className="post-link">
-                                <div className="post-image">
-                                    <div className="onTopOfImageBox">
-                                        <p className="post-title">{post.caption}</p>
-                                        <p>Geschreven door <strong>{post.username}</strong></p>
-                                        <img src={"data:image/png;base64," + post.fileContent} alt={post.caption}/>
-
-                                        <p> Category: {post.categories}</p>
-                                        <p>Price: {post.price}</p>
-
-                                        <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
-
-                                    </div>
-                                </div>
-                            </Link>
-                        </li>
-                    ))}
 
 
         </>

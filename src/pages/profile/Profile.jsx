@@ -34,10 +34,10 @@ function Profile() {
                             setSelectedFile(selected);
                             console.log(selected);
                         } else {
-                            setWarning('Maximale toegestane grootte is 10 KB');
+                            setWarning('Maximum allowed size is 10 KB');
                         }
                     } else {
-                        setWarning('Afbeelding is groter dan 1000 x 1000 pixels.');
+                        setWarning('Image is bigger than 1000 x 1000 pixels.');
                     }
                 };
             };
@@ -49,7 +49,7 @@ function Profile() {
         try {
             axios.delete(`http://localhost:8080/image/${user.username}`);
         } catch (error) {
-            console.error("Fout bij het verwijderen van de oude afbeelding:", error);
+            console.error("Something went wrong with deleting your old image", error);
         }
     }
 
@@ -70,11 +70,12 @@ function Profile() {
                     }
                 });
                 console.log(response);
+                window.location.reload();
             } catch (error) {
-                console.error("Fout bij het uploaden van de afbeelding:", error);
+                console.error("Something went wrong with uploading an image", error);
             }
         } else {
-            console.warn("Selecteer een afbeelding om te uploaden.");
+            console.warn("Select a file first.");
         }
     }
 
@@ -125,6 +126,7 @@ function Profile() {
                             placeholder="Upload een profielfoto"
                             id="profilePhotoUpload"
                             onChange={handleFileChange}
+
                         />
 
 
@@ -132,7 +134,8 @@ function Profile() {
                             {profileImage && <img src={profileImage} alt="Profiel foto"
                                                   style={{width: '200px', height: '200px'}}/>}
                         </div>
-                        <button type="submit" onClick={uploadImage}>Upload mij!</button>
+
+                        <button type="submit" onClick={uploadImage}>Upload file</button>
                     </div>
 
                     <div className="fundiv">

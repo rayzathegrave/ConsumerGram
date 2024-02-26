@@ -1,10 +1,11 @@
 // import React from 'react';
 import {Link} from 'react-router-dom';
 import './Post.css';
-import useProfileImage from "../../hooks/useProfileImage.jsx";
 import SearchContext from "../../context/SearchContext.jsx";
 import {useContext, useEffect, useState} from "react";
 import useBlog from "../../hooks/useBlogPosts.jsx";
+import html2canvas from 'html2canvas';
+import { jsPDF } from "jspdf";
 
 
 function Post() {
@@ -39,12 +40,26 @@ function Post() {
     //Hier worden de gefilterde blogs in een state gezet om te kunnen worden gebruikt in de tekst
     const [filteredPosts, setFilteredPosts] = useState(reversedPosts);
 
+    const capture = () => {
+    const element = document.querySelector('.blog-post');
 
-
-
+    html2canvas(element)
+        .then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF();
+            const imgWidth = 210; // A4 size: 210mm x 297mm
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+            pdf.save('myposts.pdf');
+        })
+        .catch((error) => {
+            console.error('Error capturing canvas', error);
+        });
+};
 
     return (
         <>
+
             <section className="postContainerOuter">
                 <div className="inner-content-container">
 
@@ -62,7 +77,7 @@ function Post() {
                             <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
 
                             <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p></Link>
-
+                            <button className="downloadButton" onClick={capture}>Download</button>
                         </div>
                     ))}
                     </ul>

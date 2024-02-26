@@ -76,14 +76,7 @@ function Login() {
         }
     }
 
-    // async function fetchData() {
-    //     try {
-    //         const response = await axios.get('http://localhost:8080/authenticated');
-    //         console.log(response.data);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
+
 
 
 
@@ -179,7 +172,7 @@ function Login() {
                             placeholder="Email"
                             onChange={(e) => setEmail(e.target.value)}/>
                 </li>
-                {error2 && <p className="error">Dit account bestaat al. Probeer een ander emailadres.</p>}
+                {error2 && <p className="error">Account already exist. Try another email.</p>}
 
 
                 <li id="center-btn">

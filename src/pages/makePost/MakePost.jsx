@@ -19,6 +19,7 @@ function MakePost() {
     });
 
     const [uploadStatus, setUploadStatus] = useState(null);
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const [value, setValue] = useState('');
     const handleChange = (event) => {
@@ -63,6 +64,7 @@ function MakePost() {
 
     const handleChangeYesOrNo = (event, value) => {
         event.preventDefault();
+        setSelectedOption(value);
         setFormData({...formData, yesNoOption: value === 'Yes' ? true : false});
     };
 
@@ -93,17 +95,17 @@ function MakePost() {
             }); // Verstuur POST-verzoek met Axios
 
             if (response.status === 201) {
-                console.log("Blog post successful!");
-                setUploadStatus("Upload is gelukt!");
+                console.log("Upload was a success!");
+                setUploadStatus("Upload was a success!");
                 console.log('form', formDataToSend)
             } else {
-                console.error("Error posting blog:", response.statusText);
-                setUploadStatus("Er is een fout opgetreden bij het uploaden.");
+                console.error("Error posting blog", response.statusText);
+                setUploadStatus("Error posting blog");
                 console.log('form', formDataToSend)
             }
         } catch (error) {
             console.error("Error posting blog:", error);
-            setUploadStatus("Er is een netwerkfout opgetreden.");
+            setUploadStatus("Network error. Please try again");
         }
     }
 
@@ -201,7 +203,7 @@ function MakePost() {
 
                         <button className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "Yes")}>Yes</button>
                         <button className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "No")}>No</button>
-
+                        {selectedOption && <p>You selected: {selectedOption}</p>}
 
                         <br/>
                         <br/>
@@ -221,11 +223,3 @@ function MakePost() {
 export default MakePost;
 
 
-//
-// const YesNoButton = ({onClick, value}) => {
-//     return (
-//         <button className="yesNoButton" onClick={() => onClick(value)}>
-//             {value}
-//         </button>
-//     );
-// };

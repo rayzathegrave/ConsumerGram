@@ -8,7 +8,7 @@ import Searchbar from "../searchbar/Searchbar.jsx";
 
 function Nav() {
 
-    const {isAuth, logout} = useContext(AuthContext);
+    const {isAuth, user, logout} = useContext(AuthContext);
     return (
         <>
 
@@ -62,6 +62,18 @@ function Nav() {
                         <div className="dropdown-content2">
                             <li><Link to="/profile"> Profile</Link></li>
                             <li><Link to="/MyPost"> My post</Link></li>
+                            {user && user.role === 'ROLE_ADMIN' && (
+                                <li>
+                                    <NavLink
+                                        to="/AdminPage"
+                                        className={({isActive}) =>
+                                            isActive === true ? 'active-link' : 'default-link'}
+                                    >
+                                        Admin
+                                    </NavLink>
+                                </li>
+                            )}
+
                         </div>
                     </div>
 

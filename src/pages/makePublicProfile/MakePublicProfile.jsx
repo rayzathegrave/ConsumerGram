@@ -78,17 +78,17 @@ function MakePublicProfile() {
             }); // Verstuur POST-verzoek met Axios
 
             if (response.status === 201) {
-                console.log("upload post successful!");
-                setUploadStatus("Upload is gelukt!");
+                console.log("Upload was a success!");
+                setUploadStatus("Upload was a success!");
                 console.log('form', formDataToSend)
             } else {
-                console.error("Error posting blog:", response.statusText);
-                setUploadStatus("Er is een fout opgetreden bij het uploaden.");
+                console.error("Error posting blog", response.statusText);
+                setUploadStatus("Error posting blog");
                 console.log('form', formDataToSend)
             }
         } catch (error) {
             console.error("Error posting blog:", error);
-            setUploadStatus("Er is een netwerkfout opgetreden.");
+            setUploadStatus("Network error. Please try again");
         }
         console.log("urlToSend:", url); // Log de URL om te verzenden
 

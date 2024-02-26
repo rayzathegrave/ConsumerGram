@@ -5,6 +5,8 @@ import {useContext, useEffect, useState} from "react";
 import SearchContext from "../../context/SearchContext.jsx";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
+import html2canvas from "html2canvas";
+import {jsPDF} from "jspdf";
 
 
 function MyPost() {
@@ -57,9 +59,22 @@ function MyPost() {
             });
     };
 
+    const capture = () => {
+        const element = document.querySelector('.blog-post');
 
-
-
+        html2canvas(element)
+            .then((canvas) => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF();
+                const imgWidth = 210; // A4 size: 210mm x 297mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                pdf.save('myposts.pdf');
+            })
+            .catch((error) => {
+                console.error('Error capturing canvas', error);
+            });
+    };
 
 
 
@@ -67,6 +82,7 @@ function MyPost() {
         <>
             <div className="pimsouterbox">
                 <section className="postContainerOuter">
+
                     <div className="inner-content-container">
 
                         <ul>{filteredPosts.map((post) => (
@@ -85,9 +101,9 @@ function MyPost() {
                                 <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p></Link>
 
                                 <form onSubmit={(e) => { e.preventDefault(); handleDelete(post.id) }}>
-                                    <button type="submit" className="simpleButtonsRemove buttonRedRemove">Delete post</button>
+                                    <button type="submit" className="simpleButtonsRemove1">Delete post</button>
                                 </form>
-
+                                <button className="downloadButton" onClick={capture}>Download</button>
                             </div>
                         ))}
                         </ul>
