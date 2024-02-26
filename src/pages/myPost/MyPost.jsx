@@ -3,6 +3,8 @@ import useBlog from "../../hooks/useBlogUser.jsx";
 import {Link} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import SearchContext from "../../context/SearchContext.jsx";
+import axios from "axios";
+import {AuthContext} from "../../context/AuthContextProvider.jsx";
 
 
 function MyPost() {
@@ -10,6 +12,8 @@ function MyPost() {
 
     //Telt hoeveel blogs de user heeft
     const totalPosts = blogPostsUser.length;
+
+    const {user} = useContext(AuthContext);
 
     //Hier komt de zoekterm uit de zoekbalk binnen
     const {searchQuery, setSearchQuery} = useContext(SearchContext);
@@ -41,7 +45,17 @@ function MyPost() {
 
     const [filteredPosts, setFilteredPosts] = useState(reversedPosts);
 
-
+    const handleDelete = (postId) => {
+        console.log(postId)
+        axios.delete(`http://localhost:8080/blog-posts/${user.username}/${postId}`)
+            .then(response => {
+                console.log('Post deleted successfully');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error deleting post:', error);
+            });
+    };
 
 
 
@@ -69,6 +83,10 @@ function MyPost() {
                                 <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
 
                                 <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p></Link>
+
+                                <form onSubmit={(e) => { e.preventDefault(); handleDelete(post.id) }}>
+                                    <button type="submit" className="simpleButtonsRemove buttonRedRemove">Delete post</button>
+                                </form>
 
                             </div>
                         ))}
