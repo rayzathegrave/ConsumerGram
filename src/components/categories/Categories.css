@@ -6,12 +6,12 @@
     list-style-type: none;
     padding: 20px;
 
-
-    width: 170px;
+    width: 185px;
     height: 100vh;
     border-bottom: #242C2E solid 1px;
     border-right: #242C2E solid 1px;
-    border: 5px solid hotpink;
+    border-left: #242C2E solid 1px;
+    /*border: 5px solid hotpink;*/
 }
 
 .categoryItem {

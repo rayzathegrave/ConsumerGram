@@ -9,8 +9,13 @@ function AdminPage() {
     const [postId, setPostId] = useState(""); // State toegevoegd voor postId
     const [username, setUsername] = useState(""); // State toegevoegd voor username
     const handleDelete = () => {
+        const token = localStorage.getItem("token")
         console.log(postId);
-        axios.delete(`http://localhost:8080/blog-posts/${user.username}/${postId}`)
+        axios.delete(`http://localhost:8080/blog-posts/${user.username}/${postId}`,{headers: {
+
+                Authorization: `Bearer ${token}`
+            }})
+
             .then(response => {
                 console.log('Post deleted successfully');
                 window.location.reload(); // Herlaad de pagina na succesvol verwijderen
@@ -21,7 +26,11 @@ function AdminPage() {
     };
 
     const handleDeleteUser = () => {
-        axios.delete(`http://localhost:8080/users/${username}`)
+        const token = localStorage.getItem("token")
+        axios.delete(`http://localhost:8080/users/${username}`,{headers: {
+
+                Authorization: `Bearer ${token}`
+            }})
             .then(response => {
                 console.log('User deleted successfully');
                 window.location.reload(); // Herlaad de pagina na succesvol verwijderen

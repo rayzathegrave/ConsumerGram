@@ -1,6 +1,8 @@
 
 .signupSection {
     border-radius: 25px 25px 25px 25px;
+    margin-top: 40px;
+    
 
     background: url(https://source.unsplash.com/TV2gg2kZD1o/1600x800);
     background-repeat: no-repeat;
@@ -16,7 +18,7 @@
     display: flex;
     color: white;
     box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
-    border: 2px solid blue;
+    /*border: 2px solid blue;*/
 }
 
 .info {

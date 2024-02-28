@@ -46,8 +46,15 @@ function Profile() {
 
 
     async function deleteOldImage() {
+        const token = localStorage.getItem("token")
         try {
-            axios.delete(`http://localhost:8080/image/${user.username}`);
+            axios.delete(`http://localhost:8080/image/${user.username}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+
         } catch (error) {
             console.error("Something went wrong with deleting your old image", error);
         }
@@ -57,7 +64,7 @@ function Profile() {
         if (selectedFile) {
             // Verwijder de oude afbeelding
             deleteOldImage();
-
+ const token = localStorage.getItem("token")
             // Upload de nieuwe afbeelding nadat de oude is verwijderd
             const formData = new FormData();
             formData.append('file', selectedFile);
@@ -67,6 +74,7 @@ function Profile() {
                 const response = await axios.post('http://localhost:8080/image', formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${token}`,
                     }
                 });
                 console.log(response);

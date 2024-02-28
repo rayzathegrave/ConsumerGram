@@ -11,8 +11,13 @@ function useProfileImage() {
     useEffect(() => {
         async function getImage() {
             try {
+                const token = localStorage.getItem("token")
                 const response = await axios.get(`http://localhost:8080/image/${user.username}`, {
                     responseType: 'arraybuffer',
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                        Authorization: `Bearer ${token}`,
+                    }
                 });
                 const blob = new Blob([response.data], { type: 'image/png' });
                 const dataUrl = URL.createObjectURL(blob);

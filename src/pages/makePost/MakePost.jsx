@@ -86,11 +86,12 @@ function MakePost() {
         formDataToSend.append("username", formData.username);
 
         console.log('form', formDataToSend)
-
+        const token = localStorage.getItem("token")
         try {
             const response = await axios.post(url, formDataToSend, {
                 headers: {
-                    "Content-Type": "multipart/form-data", // Stel de juiste Content-Type header in
+                    "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${token}`,
                 }
             }); // Verstuur POST-verzoek met Axios
 

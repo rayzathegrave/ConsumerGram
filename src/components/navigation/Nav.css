@@ -149,7 +149,7 @@ nav ul {
     /* Apply margin to items below dropdown content */
     .navlogin:hover ~ .makepost,
     .navlogin:hover ~ .makepost {
-        margin-top: 100px; /* Adjust as needed */
+        margin-top: 130px; /* Adjust as needed */
     }
 }
 

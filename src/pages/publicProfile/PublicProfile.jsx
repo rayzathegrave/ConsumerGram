@@ -52,7 +52,7 @@ function PublicProfile() {
                                     <h2>Everyone (including the FBI) can see this information</h2>
                                     <p>Back to the <Link to="/">Homepage</Link></p>
                                 </div>
-
+<br/>
                                 <strong><p className="totalBlogsCounter"> {username} already
                                     has {totalPosts} contributions</p>
                                 </strong>

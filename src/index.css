@@ -49,7 +49,7 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 4px dashed blue;
+    /*border: 4px dashed blue;*/
 }
 
 
