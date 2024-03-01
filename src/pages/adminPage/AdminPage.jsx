@@ -28,7 +28,6 @@ function AdminPage() {
     const handleDeleteUser = () => {
         const token = localStorage.getItem("token")
         axios.delete(`http://localhost:8080/users/${username}`,{headers: {
-
                 Authorization: `Bearer ${token}`
             }})
             .then(response => {

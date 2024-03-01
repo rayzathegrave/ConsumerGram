@@ -14,6 +14,9 @@ import MyPost from "./pages/mypost/MyPost.jsx";
 import MakePublicProfile from "./pages/makePublicProfile/MakePublicProfile.jsx";
 import PublicProfile from "./pages/publicProfile/PublicProfile.jsx";
 import AdminPage from "./pages/adminPage/AdminPage.jsx";
+import Footer from "./components/footer/Footer.jsx";
+import ChangeUserData from "./pages/changeUserData/ChangeUserData.jsx";
+
 
 function App() {
 
@@ -50,6 +53,12 @@ function App() {
                        element={<div><Helmet><title>ConsumerGram | My Post</title></Helmet>{isAuth ? <MyPost/> :
                            <Navigate to="/login"/>}</div>}/>
 
+                <Route path="/changeUserData"
+                       element={<div><Helmet><title>ConsumerGram | Change User Data</title></Helmet>{isAuth ? <ChangeUserData/> :
+                           <Navigate to="/login"/>}</div>}/>
+
+
+
 
                 <Route path="/ProfilePost/:id"
                        element={<div><Helmet><title>ConsumerGram | Post </title></Helmet><ProfilePost/></div>}/>
@@ -60,11 +69,15 @@ function App() {
 
                 <Route
                     path="/AdminPage"
-                    element={<div><Helmet><title>ConsumerGram | Admin </title></Helmet>{isAuth && user.role === 'ROLE_ADMIN' ? <AdminPage /> : <Navigate to="/login" />}</div>}
+                    element={<div><Helmet><title>ConsumerGram | Admin </title>
+                    </Helmet>{isAuth && user.role === 'ROLE_ADMIN' ? <AdminPage/> : <Navigate to="/login"/>}</div>}
                 />
 
             </Routes>
 
+            <footer>
+                <Footer/>
+            </footer>
         </>
     )
 }

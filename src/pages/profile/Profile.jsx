@@ -64,7 +64,7 @@ function Profile() {
         if (selectedFile) {
             // Verwijder de oude afbeelding
             deleteOldImage();
- const token = localStorage.getItem("token")
+            const token = localStorage.getItem("token")
             // Upload de nieuwe afbeelding nadat de oude is verwijderd
             const formData = new FormData();
             formData.append('file', selectedFile);
@@ -138,15 +138,24 @@ function Profile() {
                         />
 
 
+
                         <div className="profile-image">
                             {profileImage && <img src={profileImage} alt="Profiel foto"
                                                   style={{width: '200px', height: '200px'}}/>}
                         </div>
 
+
+
                         <button type="submit" onClick={uploadImage}>Upload file</button>
                     </div>
 
+
+
+
                     <div className="fundiv">
+                        <button className="changebutton">
+                            <Link to="/changeUserData">Change user data</Link>
+                        </button>
                         <h2>Only you (and the FBI) can see this information</h2>
                         <p> Make a public profile <Link to="/makepublicprofile">Go here</Link></p>
                         <p> Already have one? <Link to={`/PublicProfile/${user.username}`}>Go here</Link></p>

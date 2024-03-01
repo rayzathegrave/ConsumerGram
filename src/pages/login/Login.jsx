@@ -8,8 +8,6 @@ import {AuthContext} from "../../context/AuthContextProvider.jsx";
 function Login() {
 
 
-
-
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -19,11 +17,11 @@ function Login() {
     const [error2, toggleError2] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+    const {login} = useContext(AuthContext);
 
 
     // registreer functie
-    async function handleForm1Submit (e) {
+    async function handleForm1Submit(e) {
         e.preventDefault();
         toggleError2(false);
         toggleLoading(true);
@@ -34,7 +32,7 @@ function Login() {
                 username: username,
                 password: password,
                 email: email,
-                enabled : enabled
+                enabled: enabled
             });
 
             console.log(response.data);
@@ -52,9 +50,6 @@ function Login() {
             console.error(error);
         }
     }
-
-
-
 
 
     // login functie
@@ -77,114 +72,115 @@ function Login() {
     }
 
 
-
-
-
-
     return (
-<>
+        <>
 
 
-<div className="pimsouterbox">
+            <div className="pimsouterbox">
 
-    <div className="signupSection">
+                <div className="signupSection">
 
-        <div className="info">
+                    <div className="info">
 
-            <h2>Welcome to ConsumerGram</h2>
-            <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
-            <p>The Future Is Here</p>
-            <ul className="noBullet">
-                <form onSubmit={handleForm2Submit}>
+                        <h2>Welcome to ConsumerGram</h2>
+                        <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
+                        <p>The Future Is Here</p>
+                        <ul className="noBullet">
+                            <form onSubmit={handleForm2Submit}>
 
-                <li>
-                    <label htmlFor="username"></label>
-                    <input type="text"
-                           className="inputFields"
-                           id="username"
-                           value={username}
-                           name="username"
-                           placeholder="Username"
-                           required
-                           autoComplete="on"
-                           onChange={(e) => setUserName(e.target.value)}/>
+                                <li>
+                                    <label htmlFor="username"></label>
+                                    <input type="text"
+                                           className="inputFields"
+                                           id="username"
+                                           value={username}
+                                           name="username"
+                                           placeholder="Username"
+                                           required
+                                           autoComplete="on"
+                                           onChange={(e) => setUserName(e.target.value)}/>
 
-                </li>
-                <li>
-                    <label htmlFor="password"></label>
-                    <input type="password"
-                           className="inputFields"
-                           id="password"
-                           name="password"
-                           value={password}
-                           placeholder="Password"
-                           required
-                           onChange={(e) => setPassword(e.target.value)}/>
+                                </li>
+                                <li>
+                                    <label htmlFor="password"></label>
+                                    <input type="password"
+                                           className="inputFields"
+                                           id="password"
+                                           name="password"
+                                           value={password}
+                                           placeholder="Password"
+                                           required
+                                           onChange={(e) => setPassword(e.target.value)}/>
 
-                </li>
-                    {error1 && <p className="error">Combinatie van username en wachtwoord is onjuist</p>}
-                <li id="center-btn">
-                    <input type="submit" id="join-btn1" name="Login" alt="Login" value="Login"/>
-                </li>
-            </form>
-                </ul>
+                                </li>
+                                {error1 && <p className="error">Combination of username and password is not valid</p>}
+                                <li id="center-btn">
+                                    <input type="submit" id="join-btn1" name="Login" alt="Login" value="Login"/>
+                                </li>
+                            </form>
+                        </ul>
 
-        </div>
-
-
-
-        <form  onSubmit={handleForm1Submit} className="signupForm">
-            <h2>Sign Up</h2>
-            <ul className="noBullet">
-                    <li>
-                        {/*<label htmlFor="username">Username</label>*/}
-                        <input
-                            className="inputFields"
-                            type="text"
-                            name="username"
-                            required
-                            value={username}
-                            placeholder="Username"
-                            id="username"
-                            onChange={(e) => setUserName(e.target.value)}/>
-                    </li>
-                    <li>
-                        {/*<label htmlFor="password">password</label>*/}
-                        <input
-                            className="inputFields"
-                            type="password"
-                            name="password"
-                            required
-                            value={password}
-                            id="password"
-                            placeholder="Password"
-                            onChange={(e) => setPassword(e.target.value)}/>
-                    </li>
-                    <li>
-                        {/*<label htmlFor="email">email</label>*/}
-                        <input
-                            className="inputFields"
-                            type="email"
-                            name="email"
-                            required
-                            value={email}
-                            id="email"
-                            placeholder="Email"
-                            onChange={(e) => setEmail(e.target.value)}/>
-                </li>
-                {error2 && <p className="error">Account already exist. Try another email.</p>}
+                    </div>
 
 
-                <li id="center-btn">
-                    <input type="submit" id="join-btn" name="join" alt="Join" value="Join"/>
-                </li>
-            </ul>
-        </form>
-    </div>
-</div>
+                    <form onSubmit={handleForm1Submit} className="signupForm">
+                        <h2>Sign Up</h2>
+                        <ul className="noBullet">
+                            <li>
+                                {/*<label htmlFor="username">Username</label>*/}
+                                <input
+                                    className="inputFields"
+                                    type="text"
+                                    name="username"
+                                    required
+                                    value={username}
+                                    placeholder="Username"
+                                    id="username"
+                                    maxLength={50}
+                                    onChange={(e) => setUserName(e.target.value)}/>
+                            </li>
+                            <li>
+                                {/*<label htmlFor="password">password</label>*/}
+                                <input
+                                    className="inputFields"
+                                    type="password"
+                                    name="password"
+                                    required
+                                    value={password}
+                                    maxLength={50}
+                                    id="password"
+                                    placeholder="Password"
+                                    onChange={(e) => setPassword(e.target.value)}/>
+                            </li>
+                            <li>
+                                {/*<label htmlFor="email">email</label>*/}
+                                <input
+                                    className="inputFields"
+                                    type="email"
+                                    name="email"
+                                    required
+                                    value={email}
+                                    id="email"
+                                    placeholder="Email"
+                                    onChange={(e) => setEmail(e.target.value)}/>
+                            </li>
+                            {error2 && <p className="error">Account already exist. Try another email.</p>}
 
 
-</>
-);
+
+
+                            <li id="center-btn">
+                                <input type="submit" id="join-btn" name="join" alt="Join" value="Join"
+                                       onClick={() => alert('Account created')}/>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+
+
+        </>
+    );
 }
+
 export default Login;
