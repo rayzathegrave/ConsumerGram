@@ -75,9 +75,9 @@ function App() {
 
             </Routes>
 
-            <footer>
-                <Footer/>
-            </footer>
+
+
+
         </>
     )
 }
