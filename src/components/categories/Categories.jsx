@@ -41,6 +41,7 @@ function Categories() {
                 <li onClick={() => handleCategoryClick('Houses')} className="categoryItem">Houses</li>
                 <li onClick={() => handleCategoryClick('Other')} className="categoryItem">Other</li>
 
+                <h3>Filters</h3>
                 <div>
                     <SatisfiedConsumersButton triggerYesOption={triggerYesOption}/>
                 </div>

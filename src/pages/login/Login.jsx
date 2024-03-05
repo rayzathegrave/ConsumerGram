@@ -37,8 +37,15 @@ function Login() {
 
             console.log(response.data);
 
-        } catch (error) {
-            console.error(error);
+        } catch (e) {
+            if (axios.isCancel(e)) {
+                console.log('Request canceled:', e.message);
+            } else {
+                console.error(e);
+                toggleError2(true);
+            }
+        } finally {
+            toggleLoading(false);
         }
     }
 
@@ -164,15 +171,21 @@ function Login() {
                                     placeholder="Email"
                                     onChange={(e) => setEmail(e.target.value)}/>
                             </li>
-                            {error2 && <p className="error">Account already exist. Try another email.</p>}
-
-
+                            {error2 && <p className="error">Account already exist. Try another username.</p>}
 
 
                             <li id="center-btn">
                                 <input type="submit" id="join-btn" name="join" alt="Join" value="Join"
-                                       onClick={() => alert('Account created')}/>
+                                       onClick={() => {
+                                           if (error1 || error2) {
+                                               alert('An error occurred');
+                                           } else {
+                                               alert('Account created');
+                                           }
+                                       }}/>
                             </li>
+
+
                         </ul>
                     </form>
                 </div>

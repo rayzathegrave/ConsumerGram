@@ -106,18 +106,14 @@ function MakePublicProfile() {
             <div className="pimsouterbox">
                 <div className="signupSection">
                     <div className="info">
-                        <h2>Welcome to ConsumerGram</h2>
+                        <h2>Your public profile</h2>
                         <i className="icon ion-ios-ionic-outline" aria-hidden="true"></i>
                         <p>This information will be visible for everyone</p>
 
 
 
 
-
-
                         {previewUrl && <img src={previewUrl} alt="Preview" style={{maxWidth: "400px", maxHeight: "400px"}} />}
-
-
 
 
 

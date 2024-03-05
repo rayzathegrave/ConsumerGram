@@ -4,7 +4,7 @@ import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
 
 
-function ChangeUserData(props) {
+function ChangeUserData() {
     const {user} = useContext(AuthContext);
 
     // const [password, setPassword] = useState('');
@@ -75,7 +75,7 @@ function ChangeUserData(props) {
                         name="email"
                         id="email"
                         type="email"
-                        placeholder="Type a post ID and press delete"
+                        placeholder="Type email and press change"
                         autoComplete="on"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -95,7 +95,7 @@ function ChangeUserData(props) {
                         className="textAreaOneLine"
                         name="password"
                         id="password"
-                        placeholder="Type the username and press delete"
+                        placeholder="Type the password and press change"
                         autoComplete="on"
                         value={password}
                         maxLength={50}
