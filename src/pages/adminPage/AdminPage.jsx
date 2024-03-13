@@ -8,8 +8,9 @@ function AdminPage() {
     const { user } = useContext(AuthContext);
     const [postId, setPostId] = useState(""); // State toegevoegd voor postId
     const [username, setUsername] = useState(""); // State toegevoegd voor username
+    const token = localStorage.getItem("token")
     const handleDelete = () => {
-        const token = localStorage.getItem("token")
+
         console.log(postId);
         axios.delete(`http://localhost:8080/blog-posts/${user.username}/${postId}`,{headers: {
 

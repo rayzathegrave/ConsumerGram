@@ -19,7 +19,7 @@ function MakePublicProfile() {
         bio: "",
         username: `${user.username}`
     });
-
+    const token = localStorage.getItem("token")
     const [uploadStatus, setUploadStatus] = useState(null);
 
     const handleChangeName = (event) => {
@@ -69,7 +69,7 @@ function MakePublicProfile() {
 
 
         console.log('form', formDataToSend)
-        const token = localStorage.getItem("token")
+
         try {
             const response = await axios.post(url, formDataToSend, {
                 headers: {
