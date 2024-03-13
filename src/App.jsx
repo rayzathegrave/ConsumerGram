@@ -16,6 +16,7 @@ import PublicProfile from "./pages/publicProfile/PublicProfile.jsx";
 import AdminPage from "./pages/adminPage/AdminPage.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import ChangeUserData from "./pages/changeUserData/ChangeUserData.jsx";
+import ScrollToTop from "./helpers/ScrollToTop.jsx";
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <>
 
             <Nav/>
+
+            <ScrollToTop/>
 
             <Routes>
                 {/*<Route path="/" element={<Home/>}/>*/}

@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import useBlog from "../hooks/useBlogPosts.jsx";
+
 
 const SearchContext = createContext();
 

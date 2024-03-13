@@ -2,7 +2,7 @@
 import {Link} from 'react-router-dom';
 import './Post.css';
 import SearchContext from "../../context/SearchContext.jsx";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import useBlog from "../../hooks/useBlogPosts.jsx";
 import html2canvas from 'html2canvas';
 import {jsPDF} from "jspdf";
@@ -12,6 +12,7 @@ import {
     TelegramIcon, TelegramShareButton,
     WhatsappIcon, WhatsappShareButton, LinkedinShareButton, LinkedinIcon,
 } from "react-share";
+import UpVote from "../upVote/UpVote.jsx";
 
 
 function Post() {
@@ -61,30 +62,64 @@ function Post() {
             .catch((error) => {
                 console.error('Error capturing canvas', error);
             });
-    };
+    }
+
+    // ----- Lazy loading start -----
+    const [visiblePosts, setVisiblePosts] = useState(3); // Het aantal zichtbare blogposts
+    const containerRef = useRef(null);
+    useEffect(() => {
+        const handleScroll = () => {
+            if (
+                containerRef.current &&
+                window.innerHeight + window.scrollY >= containerRef.current.offsetTop + containerRef.current.clientHeight
+            ) {
+                // Wanneer de gebruiker de onderkant van de pagina bereikt, voeg 3 extra posts toe
+                setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 3);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+// ----- Lazy loading end -----
+
 
     return (
         <>
 
-            <section className="postContainerOuter">
+            <section className="postContainerOuter" ref={containerRef} >
                 <div className="inner-content-container">
 
                     <ul>{filteredPosts.map((post) => (
-                        <>
+                        <li key={post.id}>
                             <div key={post.id} className="blog-post">
                                 <h2>{post.caption}</h2>
                                 <p>Posted by: {post.username}</p>
 
                                 <img src={"data:image/png;base64," + post.fileContent} alt={post.caption}/>
 
-                                <p> Category: {post.categories}</p>
-                                <p>Price: {post.price}</p>
+                                <div className="postBottomOuterContainer">
 
-                                <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
+                                    <div className="postInnerContainer1">
+                                        <p> Category: {post.categories}</p>
+                                        <p>Price: {post.price}</p>
 
-                                <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p></Link>
-                                <button className="downloadButton" onClick={capture}>Download</button>
+                                        <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
+
+                                        <button className="downloadButton" onClick={capture}>Download</button>
+
+                                        <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p>
+                                        </Link>
+                                    </div>
+
+                                    <div className="postInnerContainer2">
+                                        <UpVote blogId={post.id}/>
+                                    </div>
+
+
+                                </div>
                             </div>
+
                             <div>
                                 <WhatsappShareButton
                                     className="ShareIcon"
@@ -127,8 +162,9 @@ function Post() {
                                     <LinkedinIcon size={32} round/>
                                 </LinkedinShareButton>
 
+
                             </div>
-                        </>
+                        </li>
                     ))}
 
                     </ul>

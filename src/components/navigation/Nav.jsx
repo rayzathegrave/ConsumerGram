@@ -25,11 +25,7 @@ function Nav() {
                         </li>
                     </div>
 
-                    {/*<div className="search">*/}
-                    {/*    <form action="">*/}
-                    {/*        <input className="searchbar" type="search" placeholder="Search ConsumerGram"/>*/}
-                    {/*    </form>*/}
-                    {/*</div>*/}
+
 
                     <Searchbar/>
 

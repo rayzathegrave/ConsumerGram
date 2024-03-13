@@ -37,7 +37,7 @@
 
 .blog-post-item {
     list-style: none;
-    margin: 0 auto; /* Center the box horizontally */
+    margin: 0 auto;
     width: 50%;
     padding: 20px;
 }
@@ -47,8 +47,8 @@
 }
 
 .post-image {
-    border: 2px solid #ccc; /* White outlined box */
-    border-radius: 8px; /* Rounded corners */
+    border: 2px solid #ccc;
+    border-radius: 8px;
     padding: 20px;
 
 }
@@ -62,7 +62,7 @@
     max-width: 50%;
     height: auto;
     display: block;
-    margin: 10px auto; /* Center the image horizontally */
+    margin: 10px auto;
 }
 
 .onTopOfImageBox {

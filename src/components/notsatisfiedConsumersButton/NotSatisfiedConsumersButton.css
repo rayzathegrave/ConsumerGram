@@ -7,9 +7,6 @@
     cursor: pointer;
     transition: background 0.4s, padding 0.4s;
     border-radius: 4px;
+    min-height: 4lh;
 }
 
-.NotsatisfiedConsumersButton:hover {
-    background: rgba(20, 20, 20, .8);
-    padding: 8px 40px; /* Adjust hover padding */
-}

@@ -3,8 +3,7 @@ import {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
 import axios from "axios";
-import error from "eslint-plugin-react/lib/util/error.js";
-import useProfile from "../../Hooks/useAllUserProfiles.jsx";
+
 
 function MakePublicProfile() {
 

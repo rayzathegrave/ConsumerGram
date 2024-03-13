@@ -2,8 +2,7 @@ import './MakePost.css';
 import {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContextProvider.jsx";
-import Post from "../../components/post/Post.jsx";
-import useProfileImage from "../../hooks/useProfileImage.jsx";
+
 
 function MakePost() {
 
@@ -47,11 +46,6 @@ function MakePost() {
         setFormData({...formData, [name]: value});
     };
 
-
-    // const handleChangeCategories = (event) => {
-    //     const {value} = event.target;
-    //     setFormData({...formData, categories: value});
-    // };
 
     const handleChangeCategories = (event) => {
     const {value} = event.target;
@@ -125,7 +119,7 @@ function MakePost() {
 
 
                         <label className="textStart" htmlFor="caption">
-                            {/*<p>Caption: </p>*/}
+
                         </label>
 
 
@@ -146,7 +140,7 @@ function MakePost() {
 
                         <label className="textStart" htmlFor="fileUpload">
                             <br/>
-                            {/*<p> Picture:</p>*/}
+
                         </label>
                         <br/>
 
@@ -165,7 +159,7 @@ function MakePost() {
 
                         <label className="textStart" htmlFor="price">
                             <br/>
-                            {/*<p>Price: </p>*/}
+
                         </label>
 
                         <div className="input-container">
@@ -212,7 +206,7 @@ function MakePost() {
                         <button className="postbutton" type="submit" onClick={uploadGegevens}>Post</button>
                         {uploadStatus && <p>{uploadStatus}</p>}
 
-                        {/*<button className="postbutton" type="submit">post</button>*/}
+
                     </div>
                 </div>
 
