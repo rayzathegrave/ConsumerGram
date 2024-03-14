@@ -66,28 +66,27 @@
 
 .ShareIcon {
     box-shadow: none;
-    margin: 5px 5px 0 0 ;
+    margin: 5px 5px 0 0;
 }
 
 
-.postBottomOuterContainer{
+.postBottomOuterContainer {
     display: flex;
     flex-direction: row;
 }
 
-.postInnerContainer1{
+.postInnerContainer1 {
     display: flex;
     flex-direction: column;
 }
 
-.postInnerContainer2{
+.postInnerContainer2 {
     margin-left: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 40px;
 }
-
 
 
 @media screen and (max-width: 768px) {
@@ -100,5 +99,24 @@
 
         width: 100%; /* Adjust width for mobile */
     }
+
+    .postBottomOuterContainer {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 100%;
+        justify-content:  flex-end;
+        flex-grow: 1;
+    }
+
+
+
+    .postInnerContainer2 {
+        flex-grow: 1;
+        margin-left: 0px;
+        display: flex;
+        align-items: end;
+
+    }
+
 }
 

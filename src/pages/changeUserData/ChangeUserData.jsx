@@ -99,11 +99,16 @@ function ChangeUserData() {
                         autoComplete="on"
                         value={password}
                         maxLength={50}
+                        pattern=".*[!@#$%^&*].*"
+                        minLength={8}
                         onChange={(e) => setPassword(e.target.value)}/>
                     <br/>
                     <button className="simpleButtonsRemove buttonRedRemove" type="submit">
                         Change <strong>password</strong>
                     </button>
+                    <br/>
+                    <i className="iGrey">Password must be at least 8 characters <br/> long and contain a special
+                        <br/> character ?=.*[!@#$%^&*]</i>
                 </form>
             </div>
 

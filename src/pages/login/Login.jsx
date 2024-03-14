@@ -144,6 +144,7 @@ function Login() {
                                     placeholder="Username"
                                     id="username"
                                     maxLength={50}
+                                    minLength={1}
                                     onChange={(e) => setUserName(e.target.value)}/>
                             </li>
                             <li>
@@ -155,6 +156,8 @@ function Login() {
                                     required
                                     value={password}
                                     maxLength={50}
+                                    pattern=".*[!@#$%^&*].*"
+                                    minLength={8}
                                     id="password"
                                     placeholder="Password"
                                     onChange={(e) => setPassword(e.target.value)}/>
@@ -171,6 +174,7 @@ function Login() {
                                     placeholder="Email"
                                     onChange={(e) => setEmail(e.target.value)}/>
                             </li>
+
                             {error2 && <p className="error">Account already exist. Try another username.</p>}
 
 
@@ -184,7 +188,9 @@ function Login() {
                                            }
                                        }}/>
                             </li>
-
+                            <br/>
+                            <i className="iGrey">Password must be at least 8 characters <br/> long and contain a special
+                                <br/> character ?=.*[!@#$%^&*]</i>
 
                         </ul>
                     </form>

@@ -5,7 +5,7 @@ function SatisfiedConsumersButton({ triggerYesOption }) {
     return (
         <>
             <button className="satisfiedConsumersButton" onClick={triggerYesOption}>
-                See only satisfied consumers XX
+                See only satisfied users
             </button>
         </>
     );

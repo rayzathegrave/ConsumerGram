@@ -5,7 +5,7 @@ function NotSatisfiedConsumersButton({ triggerNoOption }) {
     return (
         <>
             <button className="NotsatisfiedConsumersButton" onClick={triggerNoOption}>
-                See only unsatisfied consumers
+                See only unsatisfied users
             </button>
         </>
     );

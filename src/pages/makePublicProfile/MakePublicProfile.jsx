@@ -151,6 +151,8 @@ function MakePublicProfile() {
                                     className="inputFields"
                                     placeholder="name"
                                     name="name"
+                                    minLength={1}
+                                    maxLength={50}
                                     id="name"
                                     autoComplete="on"
                                     value={formData.name}

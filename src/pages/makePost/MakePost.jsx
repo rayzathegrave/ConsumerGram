@@ -177,8 +177,8 @@ function MakePost() {
 
                         <div className="select-container">
                             <br/>
-                            {/*<p>Category: </p>*/}
-                            <select onChange={handleChangeCategories}>
+
+                            <select onChange={handleChangeCategories} required >
                                 <option value="please select a category">please select a category</option>
                                 <option value="Cars">Cars</option>
                                 <option value="Tech">Tech</option>
