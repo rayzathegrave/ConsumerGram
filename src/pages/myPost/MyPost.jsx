@@ -80,14 +80,14 @@ function MyPost() {
 
     return (
         <>
-            <div className="pimsouterbox">
-                <section className="postContainerOuter">
+            <main className="pimsouterbox">
+                <article className="postContainerOuter">
 
-                    <div className="inner-content-container">
+                    <section className="inner-content-container">
 
                         <ul>{filteredPosts.map((post) => (
 
-                            <div key={post.id} className="blog-post">
+                            <li key={post.id} className="blog-post">
                                 <h2>{post.caption}</h2>
                                 <p>Posted by: {post.username}</p>
 
@@ -104,13 +104,13 @@ function MyPost() {
                                     <button type="submit" className="simpleButtonsRemove1">Delete post</button>
                                 </form>
                                 <button className="downloadButton" onClick={capture}>Download</button>
-                            </div>
+                            </li>
                         ))}
                         </ul>
-                    </div>
+                    </section>
 
-                </section>
-            </div>
+                </article>
+            </main>
         </>
     );
 }

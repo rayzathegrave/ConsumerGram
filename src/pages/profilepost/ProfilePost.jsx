@@ -18,9 +18,8 @@ function profilePost() {
 
     return (
         <>
-            <section className="postContainerOuterSolo">
-                <div className="inner-content-containerSolo">
-
+            <article className="postContainerOuterSolo">
+                <section className="inner-content-containerSolo">
 
                     <div className="blog-post-solo">
                         <h2>{post.caption}</h2>
@@ -34,17 +33,13 @@ function profilePost() {
 
                         <p>Price: {post.price}</p>
 
-                        {/*<Link to={`/ProfilePost/${post.id}`}>Go to profile</Link>*/}
-
 
                         <Link to={`/PublicProfile/${post.username}`}><p>Visit the profile of this consumer</p> </Link>
 
                     </div>
 
-
-                </div>
-
-            </section>
+                </section>
+            </article>
         </>
     );
 }

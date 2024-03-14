@@ -91,7 +91,8 @@ function Post() {
                 <div className="inner-content-container">
 
                     <ul>{filteredPosts.map((post) => (
-                        <li key={post.id}>
+                        <article key={post.id}>
+                        <li >
                             <div key={post.id} className="blog-post">
                                 <h2>{post.caption}</h2>
                                 <p>Posted by: {post.username}</p>
@@ -165,6 +166,7 @@ function Post() {
 
                             </div>
                         </li>
+                        </article>
                     ))}
 
                     </ul>
