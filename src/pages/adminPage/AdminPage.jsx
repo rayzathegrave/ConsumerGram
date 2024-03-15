@@ -8,6 +8,7 @@ function AdminPage() {
     const {user} = useContext(AuthContext);
     const [postId, setPostId] = useState(""); // State toegevoegd voor postId
     const [username, setUsername] = useState(""); // State toegevoegd voor username
+    const [usernameRole, setUsernameRole] = useState(""); // State toegevoegd voor username
     const token = localStorage.getItem("token")
     const handleDelete = () => {
 
@@ -41,6 +42,38 @@ function AdminPage() {
             })
             .catch(error => {
                 console.error('Error deleting user:', error);
+            });
+    };
+
+    const assignRoleAdmin = () => {
+        axios.post(`http://localhost:8080/users/${usernameRole}/authorities`, {
+            "authority": "ROLE_ADMIN"
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log('Role assigned successfully');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error assigning role:', error);
+            });
+    };
+
+    const deleteRoleAdmin = () => {
+        axios.delete(`http://localhost:8080/users/${usernameRole}/authorities/ROLE_ADMIN`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                console.log('Role assigned successfully');
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error assigning role:', error);
             });
     };
 
@@ -93,6 +126,33 @@ function AdminPage() {
                         Delete <strong>user</strong>
                     </button>
                 </form>
+
+                <br/>
+                <form className="adminRedfield" onSubmit={(e) => {
+                    e.preventDefault();
+                    handleDeleteUser()
+                }}>
+                    <label htmlFor="ChangeRole">
+                        <p>Add Admin</p>
+                    </label>
+                    <input
+                        className="textAreaOneLine"
+                        name="ChangeRole"
+                        id="ChangeRole"
+                        placeholder="Type the username and press button"
+                        autoComplete="on"
+                        value={usernameRole} // Waarde van de input gekoppeld aan username
+                        onChange={(e) => setUsernameRole(e.target.value)}
+                    />
+                    <br/>
+                    <button className="simpleButtonsRemove buttonRedRemove" type="submit" onClick={assignRoleAdmin}>
+                        add <strong>ADMIN</strong>
+                    </button>
+                    <button className="simpleButtonsRemove buttonRedRemove" type="submit" onClick={deleteRoleAdmin}>
+                        Delete <strong>ADMIN</strong>
+                    </button>
+                </form>
+
             </div>
 
         </>
