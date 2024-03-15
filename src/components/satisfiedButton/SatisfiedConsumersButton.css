@@ -1,0 +1,15 @@
+
+.satisfiedConsumersButton {
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 14px; /* Adjust font size */
+    padding: 8px 20px; /* Adjust padding */
+    cursor: pointer;
+    transition: background 0.4s, padding 0.4s;
+    border-radius: 4px;
+    min-height: 4lh;
+    margin-bottom: 6PX;
+
+}
+

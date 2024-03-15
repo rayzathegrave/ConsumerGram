@@ -1,0 +1,158 @@
+.default-link h1 {
+    border-bottom: 1px solid transparent;
+}
+
+.active-link h1 {
+    border-bottom: #242C2E solid 1px;
+}
+
+nav ul a,
+nav ul a:visited {
+    text-decoration: none;
+}
+
+nav a {
+    font-size: 35px;
+    color: white;
+    font-weight: 700;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically in the middle */
+    list-style-type: none;
+    border-bottom: #242C2E solid 1px;
+    padding: 0 40px; /* Adjust padding */
+}
+
+.searchbar {
+    border-radius: 9px;
+    width: 600px;
+    height: 40px;
+    border: none;
+    background-color: #1A282D;
+    color: white;
+}
+
+.mainlogo {
+    display: flex;
+    align-items: center;
+}
+
+.brandname {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.navlogin {
+    position: relative;
+    display: inline-block;
+}
+
+.navprofile {
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.dropdown-content2 {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    transition: opacity 0.7s ease;
+}
+
+.dropdown-content2 a {
+    font-size: 30px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content2 a:hover {
+    border-bottom: #242C2E solid 1px;
+}
+
+/* Show the dropdown menu on hover */
+.navlogin:hover .dropdown-content2 {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.navlogin:hover .dropbtn {
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .searchbar {
+        margin-top: 5px;
+        width: 350px;
+        display: flex;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .search {
+        display: flex;
+        justify-content: center;
+    }
+
+
+
+    .dropdown-content2 {
+        display: none;
+        z-index: 1;
+        transition: opacity 0.7s ease;
+        top: 100%;
+        left: -25%;
+        right: -25%;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+       ;
+    }
+
+    .dropdown-content2 a {
+        display: block;
+        font-size: 30px;
+        color: white; /* Adjust as needed */
+        text-decoration: none;
+
+
+    }
+
+    .navlogin:hover .dropdown-content2 {
+        display: block;
+    }
+
+    /* Apply margin to items below dropdown content */
+    .navlogin:hover ~ .makepost,
+    .navlogin:hover ~ .makepost {
+        margin-top: 130px; /* Adjust as needed */
+    }
+}
+
+
+
+
+
+

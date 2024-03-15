@@ -1,0 +1,18 @@
+.upvoteButton{
+
+    bottom: 10px;
+    right: 10px;
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    font-size: 10px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.upvoteButton:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 8px 40px; /* Adjust hover padding */
+}
+

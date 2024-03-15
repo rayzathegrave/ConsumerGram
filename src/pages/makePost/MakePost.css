@@ -1,0 +1,155 @@
+.makepostcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.innermakepost {
+
+    border: 1px solid #fff; /* Witte rand van 1px solid */
+    box-shadow: 0 0 10px rgba(222, 28, 28, 0.1);
+    max-width: 600px; /* Optioneel: voeg een maximale breedte toe aan de container */
+    width: 100%; /* Zorg ervoor dat de container de volledige breedte van de beschikbare ruimte inneemt */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.postbutton {
+
+        border: 1px solid rgba(10, 180, 180, 1);
+        background: rgba(20, 20, 20, .6);
+        font-size: 18px;
+        color: white;
+        padding: 10px 50px;
+        cursor: pointer;
+        transition: .4s;
+        &:hover {
+            background: rgba(20, 20, 20, .8);
+            padding: 10px 80px;
+        }
+}
+
+.yesNoButton {
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    font-size: 18px;
+    color: white;
+    margin-top: 3px;
+    padding: 10px 50px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.yesNoButton:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+.select-container select {
+    appearance: none;
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px 50px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.select-container select:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+.select-container::before {
+    content: '\25BC';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.input-container input {
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px 50px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.input-container input:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+.input-container::before {
+    content: '\1F4B8';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: white;
+}
+
+.file-upload-container {
+    position: relative;
+    margin-bottom: 10px;
+
+}
+
+.file-upload-container input[type="file"] {
+    display: none;
+}
+
+.file-upload-container label {
+    cursor: pointer;
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px 50px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.file-upload-container label:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+
+.textAreaOneLine {
+    border: 1px solid rgba(10, 180, 180, 1);
+    background: rgba(20, 20, 20, .6);
+    color: white;
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 10px;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.textAreaOneLine:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
+}
+
+
+
+
+
