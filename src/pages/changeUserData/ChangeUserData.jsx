@@ -20,7 +20,6 @@ function ChangeUserData() {
 
             const response = await axios.put(`http://localhost:8080/users/${user.username}`, {
                 username: `${user.username}`,
-                password: `${user.password}`,
                 email: email,
                 enabled: enabled
             }, {
