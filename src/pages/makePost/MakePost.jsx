@@ -21,14 +21,14 @@ function MakePost() {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const [value, setValue] = useState('');
-    const handleChange = (event) => {
-        const {value: inputValue} = event.target;
-        // Alleen toestaan: getallen, komma's, dollar- en eurotekens
+    const handleChangePrice = (event) => {
+        const {name, value} = event.target;
+        // Only allow: numbers, commas, dollar and euro signs
         const regex = /^[0-9,€$-]*$/;
-        if (regex.test(inputValue)) {
-            setValue(inputValue);
+        if (regex.test(value)) {
+            setFormData({...formData, [name]: value});
         }
-    }
+    };
 
 
     const handleChangeCaption = (event) => {
@@ -41,10 +41,7 @@ function MakePost() {
         setFormData({...formData, file: file});
     };
 
-    const handleChangePrice = (event) => {
-        const {name, value} = event.target;
-        setFormData({...formData, [name]: value});
-    };
+
 
 
     const handleChangeCategories = (event) => {
@@ -52,7 +49,6 @@ function MakePost() {
     // console.log("Selected category:", value); // Add this line
     setFormData({...formData, categories: value});
 };
-
 
 
 
