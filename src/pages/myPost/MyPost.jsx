@@ -24,6 +24,7 @@ function MyPost() {
     // const [filteredPosts, setFilteredPosts] = useState([]);
 
     const reversedPosts = blogPostsUser.slice().reverse();
+    const token = localStorage.getItem("token")
 
     useEffect(() => {
         if (blogPostsUser) {
@@ -49,14 +50,18 @@ function MyPost() {
 
     const handleDelete = (postId) => {
         console.log(postId)
-        axios.delete(`http://localhost:8080/blog-posts/${user.username}/${postId}`)
+        axios.delete(`http://localhost:8080/blog-posts/${user.username}/${postId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
             .then(response => {
                 console.log('Post deleted successfully');
                 window.location.reload();
             })
             .catch(error => {
                 console.error('Error deleting post:', error);
-            });
+            })
     };
 
     const capture = () => {
