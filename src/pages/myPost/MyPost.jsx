@@ -108,7 +108,7 @@ function MyPost() {
                                 <form onSubmit={(e) => { e.preventDefault(); handleDelete(post.id) }}>
                                     <button type="submit" className="simpleButtonsRemove1">Delete post</button>
                                 </form>
-                                <button className="downloadButton" onClick={capture}>Download</button>
+                                <button type="button" className="downloadButton" onClick={capture}>Download</button>
                             </li>
                         ))}
                         </ul>

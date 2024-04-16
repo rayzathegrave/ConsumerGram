@@ -1,0 +1,17 @@
+.footerBox2{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-height: 30px;
+}
+
+.footerOuterBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 10vh;
+    left: 0;
+}
+

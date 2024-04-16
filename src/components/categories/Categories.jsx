@@ -15,7 +15,6 @@ function Categories() {
     const { setSearchQuery } = useContext(SearchContext);
 
 
-
     const handleCategoryClick = (category) => {
         setSearchQuery(category);
     };

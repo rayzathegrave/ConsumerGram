@@ -4,7 +4,7 @@ import './SatisfiedConsumersButton.css';
 function SatisfiedConsumersButton({ triggerYesOption }) {
     return (
         <>
-            <button className="satisfiedConsumersButton" onClick={triggerYesOption}>
+            <button type="button" className="satisfiedConsumersButton" onClick={triggerYesOption}>
                 See only satisfied users
             </button>
         </>

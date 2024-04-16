@@ -192,8 +192,8 @@ function MakePost() {
                         </label>
 
 
-                        <button className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "Yes")}>Yes</button>
-                        <button className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "No")}>No</button>
+                        <button type="button" className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "Yes")}>Yes</button>
+                        <button type="button" className="yesNoButton" onClick={(event) => handleChangeYesOrNo(event, "No")}>No</button>
                         {selectedOption && <p>You selected: {selectedOption}</p>}
 
                         <br/>

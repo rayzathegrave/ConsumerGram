@@ -7,7 +7,7 @@ function UndoButton({ clearSearch }) {
 
     return (
         <>
-            <button className="undoButton" onClick={clearSearch}>
+            <button type="button" className="undoButton" onClick={clearSearch}>
                 Undo search
             </button>
         </>
