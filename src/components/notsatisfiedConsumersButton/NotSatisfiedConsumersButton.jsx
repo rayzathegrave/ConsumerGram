@@ -4,7 +4,7 @@ import './NotSatisfiedConsumersButton.css';
 function NotSatisfiedConsumersButton({ triggerNoOption }) {
     return (
         <>
-            <button className="NotsatisfiedConsumersButton" onClick={triggerNoOption}>
+            <button type="button" className="NotsatisfiedConsumersButton" onClick={triggerNoOption}>
                 See only unsatisfied users
             </button>
         </>

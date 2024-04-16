@@ -1,4 +1,3 @@
-// import React from 'react';
 import {Link} from 'react-router-dom';
 import './Post.css';
 import SearchContext from "../../context/SearchContext.jsx";
@@ -107,7 +106,7 @@ function Post() {
 
                                         <p> Satisfied: {post.yesNoOption ? 'Yes' : 'No'}</p>
 
-                                        <button className="downloadButton" onClick={capture}>Download</button>
+                                        <button type="button" className="downloadButton" onClick={capture}>Download</button>
 
                                         <Link to={`/ProfilePost/${post.id}`}><p className="postlink"> see post </p>
                                         </Link>

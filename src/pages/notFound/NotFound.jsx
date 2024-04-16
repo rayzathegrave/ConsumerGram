@@ -12,7 +12,7 @@ function NotFound() {
         <>
             <h1>404 - Not Found!</h1>
 
-            <button className="simpleButtons" onClick={handleTerugClick}> Back to the previous page?
+            <button type="button" className="simpleButtons" onClick={handleTerugClick}> Back to the previous page?
             </button>
 
         </>

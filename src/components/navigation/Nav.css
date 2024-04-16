@@ -133,11 +133,9 @@ nav ul {
 
     .dropdown-content2 a {
         display: block;
-        font-size: 30px;
-        color: white; /* Adjust as needed */
+        font-size: 20px;
+        color: white;
         text-decoration: none;
-
-
     }
 
     .navlogin:hover .dropdown-content2 {

@@ -54,7 +54,7 @@ function Nav() {
 
 
                     <div className="navlogin">
-                        <button className="dropbtn"><h1>Account</h1></button>
+                        <button type="button" className="dropbtn"><h1>Account</h1></button>
                         <div className="dropdown-content2">
                             <li><Link to="/profile"> Profile</Link></li>
                             <li><Link to="/MyPost"> My post</Link></li>
@@ -69,7 +69,7 @@ function Nav() {
                                     </NavLink>
                                 </li>
                             )}
-
+                            <li><Link to="/Contact"> Contact</Link></li>
                         </div>
                     </div>
 

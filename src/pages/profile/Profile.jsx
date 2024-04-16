@@ -153,7 +153,7 @@ function Profile() {
 
 
                     <div className="fundiv">
-                        <button className="changebutton">
+                        <button type="button" className="changebutton">
                             <Link to="/changeUserData">Change user data</Link>
                         </button>
                         <h2>Only you (and the FBI) can see this information</h2>

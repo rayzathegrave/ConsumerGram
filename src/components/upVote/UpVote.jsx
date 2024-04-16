@@ -48,7 +48,7 @@ function UpVote({ blogId }) {
     return (
         <>
             <div>
-                <button className="upvoteButton" onClick={handleUpvote}>
+                <button type="button" className="upvoteButton" onClick={handleUpvote}>
                     {upvotes} Upvote
                 </button>
             </div>

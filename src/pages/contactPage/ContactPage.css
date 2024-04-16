@@ -1,0 +1,15 @@
+.cardboxOuter {
+    display: flex;
+    margin-top: 100px;
+}
+
+.AnnouncementsboxOuter{
+    display: flex;
+    flex-direction: column;
+}
+
+.underbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
